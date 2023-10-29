@@ -1,6 +1,6 @@
 # Gerenciamento-de-Pokemon-em-js
 
-Grupo: João Vitor Rodrigues Rocha, Lucas Fortunato Martins, Theo, Thayná
+Grupo: João Vitor Rodrigues Rocha, Lucas Fortunato Martins, Theo G. Gomide, Thayná
 
 Tema: Sistema de gerenciamento de pokemon
 
