@@ -1,3 +1,8 @@
+#root {
+    margin: 0 auto;
+    
+}
+
 .center-div {
     height: 100%;
     display: flex;

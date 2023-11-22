@@ -1,3 +1,6 @@
+import './Menu.css'
+
+
 function Menu() {
 return <>
     <body>
@@ -9,7 +12,6 @@ return <>
                     <a href="#">Computer</a>
                     <a href="#">Exit</a>
                </div>
-            </div>
         </div>
         <div class="content">
             <h1>Conteúdo Principal</h1>
