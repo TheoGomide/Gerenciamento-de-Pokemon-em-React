@@ -2,20 +2,27 @@ import { useState } from 'react'
 import './Login.css'
 
 function Login() {
-    return {
-    <>
-        <body>
-        <div class="center-div">
-               <div class="center-field" >
-                   <input  type="text" id="username" name="username" placeholder="Digite aqui">
-                   <input  type="password" id="password" name="password" placeholder="Digite aqui">
-                   <button type="submit">Login</button>
-               </div>
+    return (
+        <html>
+            <head>
+                <meta charset="utf-8" />
+                <meta name="ABP" content="ABP"/>
+                <title>
+                    ABP
+                </title>
+            </head>
+
+    <body>
+            <div class="center-div">
+                   <div class="center-field" >
+                       <input  type="text" id="username" name="username" placeholder="Digite aqui"/>.
+                       <input  type="password" id="password" name="password" placeholder="Digite aqui"/>
+                       <button type="submit">Login</button>
+                   </div>
             </div>
-        </div>
     </body>
-    </>
-};
+</html>
+    );
 }
 
 export default Login;

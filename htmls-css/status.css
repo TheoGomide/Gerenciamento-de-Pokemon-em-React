@@ -1,0 +1,56 @@
+.main-div {
+    height: 100%;
+    display: flex;
+    background-color: rgb(255, 255, 255)
+
+}
+
+.left-div {
+    width: 30%;
+    display: table-column;
+    justify-content: right;
+    align-items: right;
+    background-color: rgb(34, 23, 194)
+
+}
+.right-div {
+    width: 70%;
+    display: table-column;
+    justify-content: left;
+    align-items: left;
+    background-color: rgb(3, 122, 9)
+
+}
+
+.center-field {
+    width: 300px;
+    margin: 20 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+
+}
+
+.center-field p {
+    color: white;
+    font: bold;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.party-pokemon {
+    width: 300px;
+    margin: 20 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgb(34, 33, 92);
+}
+
+.party-pokemon p {
+    color: white;
+    font: bold;
+    font-size: large;
+    text-align: center;
+}
