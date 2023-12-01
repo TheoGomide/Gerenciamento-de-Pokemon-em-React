@@ -1,24 +1,36 @@
+import React from 'react';
 import '../CSS/Menu.css';
-
-
+import { useNavigate } from 'react-router-dom';
 function Menu() {
-return <>
-    <body>
-        <div class="sidebar">
-               <div >
-                    <a href="#" class="active">Profile</a>
-                    <a href="#">Party</a>
-                    <a href="#">Bag</a>
-                    <a href="#">Computer</a>
-                    <a href="#">Exit</a>
-               </div>
+
+    const navigate = useNavigate();
+
+    const handleParty = () => {
+      navigate("/Party");
+    }
+    const handleExit = () => {
+        navigate("/");
+      }
+
+  return (
+    <>
+      <body>
+        <div className="sidebar">
+          <div>
+            <button>Profile</button>
+            <button onClick={handleParty}>Party</button>
+            <button>Bag</button>
+            <button>Computer</button>
+            <button onClick={handleExit}>Exit</button>
+          </div>
         </div>
-        <div class="content">
-            <h1>Conteúdo Principal</h1>
-            <p>Este é o conteúdo principal da página.</p>
+        <div className="content">
+          <h1>Conteúdo Principal</h1>
+          <p>Este é o conteúdo principal da página.</p>
         </div>
-    </body>
-</>
+      </body>
+    </>
+  );
 }
 
 export default Menu;

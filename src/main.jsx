@@ -8,24 +8,33 @@ import Party from './Routes/Party.jsx';
 import Saves from './Routes/Saves.jsx';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from './App.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Login />
+      },
+      {
+        path: "Menu",
+        element: <Menu />
+      },
+      {
+        path: "Party",
+        element: <Party />
+      },
+      {
+        path: "Saves",
+        element: <Saves />
+      }
+
+    ]
   },
-  {
-    path: "Menu",
-    element: <Menu />
-  },
-  {
-    path: "Party",
-    element: <Party />
-  },
-  {
-    path: "Saves",
-    element: <Saves />
-  }
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
