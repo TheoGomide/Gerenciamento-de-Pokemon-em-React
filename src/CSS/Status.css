@@ -1,0 +1,80 @@
+/* Status.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.main-div {
+  background-color: rgba(255, 166, 0, 0.753);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+.left-div,
+.right-div {
+  flex: 1;
+}
+
+.party-pokemon {
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  font: 20px bolder;
+}
+
+h1 {
+  margin: 53px 25px 10px 25px;
+}
+
+li {
+  margin: 25px 0px;
+}
+
+.left-list {
+  margin: 112px 0px;
+}
+
+.right-div {
+  padding: 20px;
+  right: 0;
+  top: 0;
+  margin:164px 500px 0px -200px ;
+}
+
+.right-div ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+.principal {
+  margin: -37px 0px 10px 320px;
+  font-family: 'Courier New', Courier, monospace;
+  font: 18px bolder;
+}
+
+
+
+.infdir {
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin: -250px 0px 200px 400px;
+}
+
+.pokemon-image {
+  width: 100%;
+  height: auto;
+  margin: 0px 0px 0px 400px;
+}
+
+h2{
+  font: 20px bolder;
+  width: 200px;
+  
+}
