@@ -1,4 +1,4 @@
-import './Party.css'
+import '../CSS/Party.css';
 
 
 function Party() {
