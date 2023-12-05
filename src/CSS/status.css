@@ -6,7 +6,7 @@
 }
 
 .left-div {
-    width: 30%;
+    width: 40%;
     display: table-column;
     justify-content: right;
     align-items: right;
@@ -39,18 +39,10 @@
     text-align: center;
 }
 
-.party-pokemon {
-    width: 300px;
-    margin: 20 auto;
-    padding: 30px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: rgb(34, 33, 92);
-}
 
 .party-pokemon p {
     color: white;
     font: bold;
     font-size: large;
-    text-align: center;
+    text-align: left;
 }

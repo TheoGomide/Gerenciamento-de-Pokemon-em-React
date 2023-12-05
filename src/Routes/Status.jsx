@@ -5,44 +5,28 @@ function Status() {
     <div className="main-div">
       <div className="left-div">
         <div className="party-pokemon">
-          <h1>Charizard</h1>
-          <p className="principal">Lv.12</p>
+          <img src="../src/sprites/charizard.jpeg" width="200" alt="Charizard" className="pokemon-image" />
+          <p><h1>Charizard ♂</h1>Lv.36 <br/> DEX NO.  6</p>
+          
           <ul className="left-list">
-            <li>DEX NO</li>
-            <li>HP</li>
-            <li>ATTACK</li>
-            <li>DEFENSE</li>
-            <li>SP.ATK</li>
-            <li>SP.DEF</li>
-            <li>SPEED</li>
-            <li>NATURE</li>
-            <li>ABILITY</li>
-            <li>ITEM</li>
           </ul>
         </div>
       </div>
       <div className="right-div">
-        <img src="../images/charizard.jpeg" width="300" alt="Charizard" className="pokemon-image" />
         <ul>
-            <li>-</li>
-            <li>78</li>
-            <li>84</li>
-            <li>78</li>
-            <li>109</li>
-            <li>85</li>
-            <li>100</li>
-            <li>Bold</li>
-            <li>Blaze</li>
-            <li>-</li>
+            <h2>STATS</h2>
+            <li>HP: 78</li>
+            <li>ATTACK: 84</li>
+            <li>DEFENSE: 78</li>
+            <li>SP.ATK: 109</li>
+            <li>SP.DEF: 85</li>
+            <li>SPEED: 100</li>
 
-          <div className="infdir">
             <h2>MOVES LEARNED</h2>
-            <ul>
             <li>Flame burst</li>
             <li>Fire Fang</li>
             <li>Inferno</li>
-            </ul>
-          </div>
+            <li>Slash</li>
         </ul>
       </div>
     </div>
