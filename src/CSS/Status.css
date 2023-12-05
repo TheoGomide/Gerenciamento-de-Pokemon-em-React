@@ -1,80 +1,56 @@
-/* Status.css */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 .main-div {
-  background-color: rgba(255, 166, 0, 0.753);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  position: relative;
+    height: 100%;
+    display: flex;
+    background-color: rgb(255, 255, 255)
+
 }
 
-.left-div,
+.left-div {
+    width: 30%;
+    display: table-column;
+    justify-content: right;
+    align-items: right;
+    background-color: rgb(34, 23, 194)
+
+}
 .right-div {
-  flex: 1;
+    width: 70%;
+    display: table-column;
+    justify-content: left;
+    align-items: left;
+    background-color: rgb(3, 122, 9)
+
+}
+
+.center-field {
+    width: 300px;
+    margin: 20 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+
+}
+
+.center-field p {
+    color: white;
+    font: bold;
+    font-size: xx-large;
+    text-align: center;
 }
 
 .party-pokemon {
-  padding: 20px;
+    width: 300px;
+    margin: 20 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgb(34, 33, 92);
 }
 
-ul {
-  list-style-type: none;
-  font: 20px bolder;
-}
-
-h1 {
-  margin: 53px 25px 10px 25px;
-}
-
-li {
-  margin: 25px 0px;
-}
-
-.left-list {
-  margin: 112px 0px;
-}
-
-.right-div {
-  padding: 20px;
-  right: 0;
-  top: 0;
-  margin:164px 500px 0px -200px ;
-}
-
-.right-div ul {
-  list-style-type: none;
-  padding: 0;
-  text-align: left;
-}
-
-.principal {
-  margin: -37px 0px 10px 320px;
-  font-family: 'Courier New', Courier, monospace;
-  font: 18px bolder;
-}
-
-
-
-.infdir {
-  bottom: 0;
-  right: 0;
-  padding: 10px;
-  margin: -250px 0px 200px 400px;
-}
-
-.pokemon-image {
-  width: 100%;
-  height: auto;
-  margin: 0px 0px 0px 400px;
-}
-
-h2{
-  font: 20px bolder;
-  width: 200px;
-  
+.party-pokemon p {
+    color: white;
+    font: bold;
+    font-size: large;
+    text-align: center;
 }
