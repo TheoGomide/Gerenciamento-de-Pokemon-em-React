@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../CSS/Login.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,8 +20,11 @@ function Login() {
       <body>
         <div className="center-div">
           <div className="center-field" >
-            <input type="text" id="username" name="username" placeholder="Digite aqui" />
-            <input type="password" id="password" name="password" placeholder="Digite aqui" />
+            <h2>Login</h2>
+            <label>Username:</label>
+            <input type="text" id="username" name="username" placeholder="username" />
+            <label>Password:</label>
+            <input type="password" id="password" name="password" placeholder="password" />
             <button onClick={handleSaves}>Login</button>
           </div>
         </div>

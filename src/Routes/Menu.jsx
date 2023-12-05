@@ -1,4 +1,3 @@
-import React from 'react';
 import '../CSS/Menu.css';
 import { useNavigate } from 'react-router-dom';
 function Menu() {
@@ -13,23 +12,28 @@ function Menu() {
       }
 
   return (
-    <>
+    <html>
       <body>
-        <div className="sidebar">
-          <div>
-            <button>Profile</button>
-            <button onClick={handleParty}>Party</button>
-            <button>Bag</button>
-            <button>Computer</button>
-            <button onClick={handleExit}>Exit</button>
-          </div>
-        </div>
-        <div className="content">
-          <h1>Conteúdo Principal</h1>
-          <p>Este é o conteúdo principal da página.</p>
-        </div>
-      </body>
-    </>
+
+<div className="contenedor">
+    <div className="menu-lateral">
+        <ul>
+          <a href="#">Profile</a>
+          <a href="#" onClick={handleParty}>Party</a>
+          <a href="#">Bag</a>
+          <a href="#">Computer</a>
+          <a href="#" onClick={handleExit}>Exit</a>
+        </ul>
+    </div>
+
+    <div className="contenido-principal">
+        <h1>Bienvenido</h1>
+        <p>Contenido principal de la página.</p>
+    </div>
+</div>
+
+</body>
+    </html>
   );
 }
 

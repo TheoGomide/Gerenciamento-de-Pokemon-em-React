@@ -8,8 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white
-
 }
 
 .center-field {
@@ -22,8 +20,14 @@
 
 }
 
+.center-field h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .center-field input {
-    width: 100%;
+    width: 93%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
