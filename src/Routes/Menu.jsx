@@ -26,9 +26,9 @@ function Menu() {
         </ul>
     </div>
 
-    <div className="contenido-principal">
-        <h1>Bienvenido</h1>
-        <p>Contenido principal de la página.</p>
+    <div className="conteudo-principal">
+        <h1>Bem vindo</h1>
+        <p>Esse é o menu do Sistema de Gerenciamento de pokemon, onde será possível você navegar por toda a aplicação!</p>
     </div>
 </div>
 
