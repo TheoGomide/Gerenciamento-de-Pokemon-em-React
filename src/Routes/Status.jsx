@@ -1,4 +1,4 @@
-import '../CSS/Status.css';
+import '../CSS/status.css';
 
 function Status() {
   return (
@@ -22,7 +22,7 @@ function Status() {
         </div>
       </div>
       <div className="right-div">
-        <img src="./charizard.jpeg" width="300" alt="Charizard" className="pokemon-image" />
+        <img src="../images/charizard.jpeg" width="300" alt="Charizard" className="pokemon-image" />
         <ul>
             <li>-</li>
             <li>78</li>
