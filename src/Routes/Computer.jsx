@@ -20,7 +20,7 @@ function Computer() {
                 
             </div>
            <div className="right">
-                <h1>Box 1</h1>
+                <h1 className="box">Box 1</h1>
                 <table border={1} >
                     <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
                     <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>

@@ -8,6 +8,7 @@
             <Link className= "link" to="/Party">Party</Link>
              <Link className= "link" to="/Saves">Saves</Link>
              <Link className= "link" to="/Status">Status</Link>
+             <Link className= "link" to="/Computer">Computer</Link>
          </nav>
      )
  }

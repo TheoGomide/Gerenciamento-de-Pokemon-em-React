@@ -7,10 +7,14 @@
     border-radius: 5px;
 }
 
-h1{
+.box{
     padding: 10px;
     margin: 10px 50px;
     font-family: 'Courier New', Courier, monospace;
+    background-color: #6eaed6;
+    border-radius: 20px;
+    width: 100px;
+    color: black;
 }
 
 table{
