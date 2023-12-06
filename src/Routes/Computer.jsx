@@ -1,0 +1,62 @@
+import { useNavigate } from 'react-router-dom';
+import '../CSS/Computer.css';
+
+function Computer() {
+    const navigate = useNavigate();
+  
+
+  
+    return (
+      <html>
+        <head>
+          <meta charset="utf-8" />
+          <meta name="ABP" content="ABP"/>
+          <title>ABP</title>
+        </head>
+  
+        <body>
+          <div className="main-div">
+            <div className='left'>
+                
+            </div>
+           <div className="right">
+                <h1>Box 1</h1>
+                <table border={1} >
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" />
+                    </th>
+
+                    <tr>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                
+                    </tr>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
+                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" />
+                    </th>
+
+                    <tr>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                        <td><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></td>
+                
+                    </tr>
+
+                   
+
+                </table>
+           </div>
+          </div>
+        </body>
+      </html>
+    );
+  }
+  
+  export default Computer;
