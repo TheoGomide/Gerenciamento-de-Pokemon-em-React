@@ -10,6 +10,9 @@ function Menu() {
     const handleExit = () => {
         navigate("/");
       }
+      const handleComputer = () => {
+        navigate("/Computer");
+      }
 
   return (
     <html>
@@ -20,7 +23,7 @@ function Menu() {
         <ul>
           <a href="#">Profile</a>
           <a href="#" onClick={handleParty}>Party</a>
-          <a href="#">Computer</a>
+          <a href="#" onClick={handleComputer} >Computer</a>
           <a href="#" onClick={handleExit}>Exit</a>
         </ul>
     </div>
