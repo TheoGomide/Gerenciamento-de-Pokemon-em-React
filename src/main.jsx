@@ -7,6 +7,7 @@ import Menu from './Routes/Menu.jsx';
 import Party from './Routes/Party.jsx';
 import Saves from './Routes/Saves.jsx';
 import Status from './Routes/Status.jsx';
+import Computer from './Routes/Computer.jsx';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "Status",
         element: <Status />
+      },
+      {
+        path: "Computer",
+        element: <Computer />
       }
 
     ]
