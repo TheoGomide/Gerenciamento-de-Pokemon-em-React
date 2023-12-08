@@ -4,6 +4,9 @@ function Menu() {
 
     const navigate = useNavigate();
 
+    const handleProfile = () => {
+      navigate("/Profile");
+    }
     const handleParty = () => {
       navigate("/Party");
     }
@@ -21,7 +24,7 @@ function Menu() {
 <div className="contenedor">
     <div className="menu-lateral">
         <ul>
-          <a href="#">Profile</a>
+          <a href="#" onClick={handleProfile}>Profile</a>
           <a href="#" onClick={handleParty}>Party</a>
           <a href="#" onClick={handleComputer} >Computer</a>
           <a href="#" onClick={handleExit}>Exit</a>
