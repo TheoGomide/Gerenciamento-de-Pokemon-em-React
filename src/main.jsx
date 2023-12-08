@@ -8,6 +8,7 @@ import Party from './Routes/Party.jsx';
 import Saves from './Routes/Saves.jsx';
 import Status from './Routes/Status.jsx';
 import Computer from './Routes/Computer.jsx';
+import Profile from './Routes/Profile.jsx';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
@@ -40,8 +41,11 @@ const router = createBrowserRouter([
       {
         path: "Computer",
         element: <Computer />
-      }
-
+      },
+      {
+        path: 'Profile', 
+        element: <Profile />,
+      },
     ]
   },
   
