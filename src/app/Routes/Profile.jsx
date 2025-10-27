@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../CSS/Profile.css'; 
+import '../../shared/styles/Profile.css'; 
 
 const Profile = () => {
     // simulação de dados do usuário

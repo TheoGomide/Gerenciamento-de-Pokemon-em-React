@@ -1,6 +1,6 @@
 
 import {  useNavigate } from 'react-router-dom';
-import '../CSS/Saves.css';
+import '../../shared/styles/Saves.css';
 
 function Saves() {
   const navigate = useNavigate();

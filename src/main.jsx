@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import '../src/app/index.css';
 
-import Login from './Routes/Login.jsx';
-import Menu from './Routes/Menu.jsx';
-import Party from './Routes/Party.jsx';
-import Saves from './Routes/Saves.jsx';
-import Status from './Routes/Status.jsx';
-import Computer from './Routes/Computer.jsx';
-import Profile from './Routes/Profile.jsx';
+import Login from './app/Routes/Login.jsx';
+import Menu from './app/Routes/Menu.jsx';
+import Party from './app/Routes/Party.jsx';
+import Saves from './app/Routes/Saves.jsx';
+import Status from './app/Routes/Status.jsx';
+import Computer from './app/Routes/Computer.jsx';
+import Profile from './app/Routes/Profile.jsx';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from './App.jsx';
+import App from './app/App.jsx';
 
 const router = createBrowserRouter([
   {

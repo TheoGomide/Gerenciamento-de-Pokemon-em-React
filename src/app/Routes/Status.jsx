@@ -1,4 +1,4 @@
-import '../CSS/status.css';
+import '../../shared/styles/Status.css';
 
 function Status() {
   return (

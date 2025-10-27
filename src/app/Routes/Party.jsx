@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../CSS/Party.css';
+import '../../shared/styles/Party.css';
   
 
 function Party() {

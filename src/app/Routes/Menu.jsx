@@ -1,4 +1,4 @@
-import '../CSS/Menu.css';
+import '../../shared/styles/Menu.css';
 import { useNavigate } from 'react-router-dom';
 function Menu() {
 

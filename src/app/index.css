@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: url('./images/menuBkgnd.jpg');
+  background-image: url('../shared/images/menuBkgnd.jpg');
   background-size: cover; /* Para cobrir todo o elemento */
   background-position: center; /* Para centralizar a imagem */
   background-repeat: no-repeat; /* Para evitar repetição da imagem */
