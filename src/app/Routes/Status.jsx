@@ -1,36 +1,51 @@
-import '../../shared/styles/Status.css';
+import '../../shared/styles/Status.css'
+import Charizard from '../../shared/sprites/charizard.jpeg'
 
-function Status() {
+export default function Status() {
   return (
-    <div className="main-div">
-      <div className="left-div">
+    <main className="main-div" role="main" aria-label="Status do Pokémon">
+      <section className="left-div" aria-label="Resumo">
         <div className="party-pokemon">
-          <img src="../src/sprites/charizard.jpeg" width="200" alt="Charizard" className="pokemon-image" />
-          <p><h1>Charizard ♂</h1>Lv.36 <br/> DEX NO.  6</p>
-          
-          <ul className="left-list">
-          </ul>
+          <figure className="pokemon-figure">
+            <img
+              src={Charizard}
+              width={200}
+              height={200}
+              alt="Charizard"
+              className="pokemon-image"
+            />
+            <figcaption className="sr-only">Charizard</figcaption>
+          </figure>
+
+          <div className="pokemon-header">
+            <h1 className="pokemon-name">Charizard ♂</h1>
+            <p>
+              <strong>Lv.</strong> 36 <br /> <strong>DEX Nº</strong> 6
+            </p>
+          </div>
+          <ul className="left-list" aria-label="Atributos adicionais"></ul>
         </div>
-      </div>
-      <div className="right-div">
-        <ul>
-            <h2>STATS</h2>
-            <li>HP: 78</li>
-            <li>ATTACK: 84</li>
-            <li>DEFENSE: 78</li>
-            <li>SP.ATK: 109</li>
-            <li>SP.DEF: 85</li>
-            <li>SPEED: 100</li>
+      </section>
 
-            <h2>MOVES LEARNED</h2>
-            <li>Flame burst</li>
-            <li>Fire Fang</li>
-            <li>Inferno</li>
-            <li>Slash</li>
+      <section className="right-div" aria-label="Estatísticas e golpes">
+        <h2>Stats</h2>
+        <ul className="stats-list">
+          <li>HP: 78</li>
+          <li>Attack: 84</li>
+          <li>Defense: 78</li>
+          <li>Sp. Atk: 109</li>
+          <li>Sp. Def: 85</li>
+          <li>Speed: 100</li>
         </ul>
-      </div>
-    </div>
-  );
-}
 
-export default Status;
+        <h2>Moves learned</h2>
+        <ul className="moves-list">
+          <li>Flame Burst</li>
+          <li>Fire Fang</li>
+          <li>Inferno</li>
+          <li>Slash</li>
+        </ul>
+      </section>
+    </main>
+  )
+}

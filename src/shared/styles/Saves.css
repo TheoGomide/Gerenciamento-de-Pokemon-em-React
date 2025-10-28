@@ -1,31 +1,28 @@
 #root {
-    margin: 0 auto;
-    
+  margin: 0 auto;
 }
 
 .center-div {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white
-
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 .center-field {
-    width: 300px;
-    margin: 10 auto;
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 5px;
-    background-color: #333;
-    cursor: pointer;
-
+  width: 300px;
+  margin: 10 auto;
+  padding: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: #333;
+  cursor: pointer;
 }
 
 .center-field p {
-    color: white;
-    font: bold;
-    font-size: xx-large;
-    text-align: center;
+  color: white;
+  font: bold;
+  font-size: xx-large;
+  text-align: center;
 }

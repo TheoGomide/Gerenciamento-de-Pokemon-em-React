@@ -1,50 +1,47 @@
-import { useNavigate } from 'react-router-dom';
-import '../../shared/styles/Party.css';
-  
+import { useNavigate } from 'react-router-dom'
+import '../../shared/styles/Party.css'
 
-function Party() {
-  const navigate = useNavigate();
+export default function Party() {
+  const navigate = useNavigate()
 
   const handleStatus = () => {
-    navigate("/Status");
+    navigate('/Status')
   }
 
   return (
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <meta name="ABP" content="ABP"/>
-        <title>ABP</title>
-      </head>
+    <main className="main-div" role="main">
+      <section className="left-div" aria-label="Pokémons principais">
+        <button
+          type="button"
+          className="party-pokemon"
+          onClick={handleStatus}
+          aria-label="Abrir status do Charizard"
+        >
+          Charizard
+        </button>
 
-      <body>
-        <div className="main-div">
-          <div>
-            <div className="party-pokemon" onClick={handleStatus}>  
-              <p>Charizard</p>
-            </div>
-            <div className="party-pokemon">
-              <p>Pokemon 2</p>
-            </div>
-            <div className="party-pokemon">
-              <p>Pokemon 3</p>
-            </div>
-          </div>
-          <div className="right-div">
-            <div className="party-pokemon">
-              <p>Pokemon 4</p>
-            </div>
-            <div className="party-pokemon">
-              <p>Pokemon 5</p>
-            </div>
-            <div className="party-pokemon">
-              <p>Pokemon 6</p>
-            </div>
-          </div>
+        <div className="party-pokemon">
+          <p>Pokémon 2</p>
         </div>
-      </body>
-    </html>
-  );
-}
 
-export default Party;
+        <div className="party-pokemon">
+          <p>Pokémon 3</p>
+        </div>
+      </section>
+
+      <section className="right-div" aria-label="Pokémons adicionais">
+        <div className="party-pokemon">
+          <p>Pokémon 4</p>
+        </div>
+
+        <div className="party-pokemon">
+          <p>Pokémon 5</p>
+        </div>
+
+        <div className="party-pokemon">
+          <p>Pokémon 6</p>
+        </div>
+      </section>
+    </main>
+  )
+}

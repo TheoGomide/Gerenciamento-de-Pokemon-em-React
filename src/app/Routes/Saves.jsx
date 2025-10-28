@@ -1,27 +1,43 @@
+import { useNavigate } from 'react-router-dom'
+import '../../shared/styles/Saves.css'
 
-import {  useNavigate } from 'react-router-dom';
-import '../../shared/styles/Saves.css';
-
-function Saves() {
-  const navigate = useNavigate();
+export default function Saves() {
+  const navigate = useNavigate()
 
   const handleMenu = () => {
-    navigate("/Menu");
+    navigate('/Menu')
   }
 
   return (
-    <div className="center-div">
-      <div className="center-field" onClick={handleMenu}>
-        <p>Save 1</p>
-      </div>
-      <div className="center-field" onClick={handleMenu}>
-        <p>Save 2</p>
-      </div>
-      <div className="center-field" onClick={handleMenu}>
-        <p>Save 3</p>
-      </div>
-    </div>
-  );
-}
+    <main role="main" className="center-div">
+      <section className="saves-section" aria-label="Selecione um save para continuar o jogo">
+        <button
+          type="button"
+          className="center-field"
+          onClick={handleMenu}
+          aria-label="Carregar Save 1"
+        >
+          Save 1
+        </button>
 
-export default Saves;
+        <button
+          type="button"
+          className="center-field"
+          onClick={handleMenu}
+          aria-label="Carregar Save 2"
+        >
+          Save 2
+        </button>
+
+        <button
+          type="button"
+          className="center-field"
+          onClick={handleMenu}
+          aria-label="Carregar Save 3"
+        >
+          Save 3
+        </button>
+      </section>
+    </main>
+  )
+}

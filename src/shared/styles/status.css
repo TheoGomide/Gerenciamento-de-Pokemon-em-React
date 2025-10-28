@@ -1,48 +1,43 @@
 .main-div {
-    height: 100%;
-    display: flex;
-    background-color: rgb(255, 255, 255)
-
+  height: 100%;
+  display: flex;
+  background-color: rgb(255, 255, 255);
 }
 
 .left-div {
-    width: 40%;
-    display: table-column;
-    justify-content: right;
-    align-items: right;
-    background-color: rgb(34, 23, 194)
-
+  width: 40%;
+  display: table-column;
+  justify-content: right;
+  align-items: right;
+  background-color: rgb(34, 23, 194);
 }
 .right-div {
-    width: 70%;
-    display: table-column;
-    justify-content: left;
-    align-items: left;
-    background-color: rgb(3, 122, 9)
-
+  width: 70%;
+  display: table-column;
+  justify-content: left;
+  align-items: left;
+  background-color: rgb(3, 122, 9);
 }
 
 .center-field {
-    width: 300px;
-    margin: 20 auto;
-    padding: 30px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #333;
-
+  width: 300px;
+  margin: 20 auto;
+  padding: 30px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
 }
 
 .center-field p {
-    color: white;
-    font: bold;
-    font-size: xx-large;
-    text-align: center;
+  color: white;
+  font: bold;
+  font-size: xx-large;
+  text-align: center;
 }
 
-
 .party-pokemon p {
-    color: white;
-    font: bold;
-    font-size: large;
-    text-align: left;
+  color: white;
+  font: bold;
+  font-size: large;
+  text-align: left;
 }

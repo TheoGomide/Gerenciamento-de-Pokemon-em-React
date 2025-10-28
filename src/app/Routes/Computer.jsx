@@ -1,62 +1,58 @@
-import { useNavigate } from 'react-router-dom';
-import '../../shared/styles/Computer.css';
+import '../../shared/styles/Computer.css'
+import Abra from '../../shared/sprites/Abra.png'
+import Bulbasaur from '../../shared/sprites/bubasaur.png'
+import Charizard from '../../shared/sprites/charizard.jpeg'
+import Eevee from '../../shared/sprites/Eevee.png'
+import Gastly from '../../shared/sprites/Gastly.png'
+import Geodude from '../../shared/sprites/Geodude.png'
+import Machop from '../../shared/sprites/Machop.png'
+import Magikarp from '../../shared/sprites/Magikarp.png'
+import Meow from '../../shared/sprites/meow.png'
+import Oddish from '../../shared/sprites/Oddish.png'
+import Pikachu from '../../shared/sprites/pikachu.png'
+import Psyduck from '../../shared/sprites/Psyduck.png'
+import Snorlax from '../../shared/sprites/Snorlax.png'
+import Squirtle from '../../shared/sprites/Squirtle.png'
+import Vulpix from '../../shared/sprites/Vulpix.png'
+import Zubat from '../../shared/sprites/Zubat.png'
 
-function Computer() {
-    const navigate = useNavigate();
-  
+const SPRITES = [
+  { src: Charizard, name: 'Charizard' },
+  { src: Pikachu, name: 'Pikachu' },
+  { src: Bulbasaur, name: 'Bulbasaur' },
+  { src: Squirtle, name: 'Squirtle' },
+  { src: Meow, name: 'Meowth' },
+  { src: Psyduck, name: 'Psyduck' },
+  { src: Geodude, name: 'Geodude' },
+  { src: Eevee, name: 'Eevee' },
+  { src: Snorlax, name: 'Snorlax' },
+  { src: Machop, name: 'Machop' },
+  { src: Abra, name: 'Abra' },
+  { src: Gastly, name: 'Gastly' },
+  { src: Magikarp, name: 'Magikarp' },
+  { src: Vulpix, name: 'Vulpix' },
+  { src: Oddish, name: 'Oddish' },
+  { src: Zubat, name: 'Zubat' },
+]
 
-  
-    return (
-      <html>
-        <head>
-          <meta charset="utf-8" />
-          <meta name="ABP" content="ABP"/>
-          <title>ABP</title>
-        </head>
-  
-        <body>
-          <div className="main-div">
-            <div className='left'>
-              <p>Colocar os pokemon aqui </p>
-            </div>
-           <div className="right">
-                <h1 className="box">Box 1</h1>
-                <table border={1} >
-                    <th><img src="../src/sprites/charizard.jpeg" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/pikachu.png" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/bubasaur.png" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/Squirtle.png" width={50} alt="cha" />
-                    </th>
+export default function Computer() {
+  return (
+    <main className="main-div" role="main">
+      <section className="left" aria-label="Área para montar o time">
+        <p>Colocar os pokémon aqui</p>
+      </section>
 
-                    <tr>
-                        <td><img src="../src/sprites/meow.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Psyduck.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Geodude.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Eevee.png" width={50} alt="cha" /></td>
-                
-                    </tr>
-                    <th><img src="../src/sprites/Snorlax.png" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/Machop.png" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/Abra.png" width={50} alt="cha" /></th>
-                    <th><img src="../src/sprites/Gastly.png" width={50} alt="cha" />
-                    </th>
+      <section className="right" aria-label="Caixa de pokémon">
+        <h1 className="box">Box 1</h1>
 
-                    <tr>
-                        <td><img src="../src/sprites/Magikarp.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Vulpix.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Oddish.png" width={50} alt="cha" /></td>
-                        <td><img src="../src/sprites/Zubat.png" width={50} alt="cha" /></td>
-                
-                    </tr>
-
-                   
-
-                </table>
-           </div>
-          </div>
-        </body>
-      </html>
-    );
-  }
-  
-  export default Computer;
+        <ul className="sprite-grid">
+          {SPRITES.map((p) => (
+            <li key={p.name} className="sprite-item">
+              <img src={p.src} width={50} height={50} alt={p.name} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  )
+}

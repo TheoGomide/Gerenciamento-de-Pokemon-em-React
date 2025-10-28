@@ -1,45 +1,43 @@
 #root {
-    margin: 0 auto;
-    
-  }
+  margin: 0 auto;
+}
 
 .center-div {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-field {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #333
-
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
 }
 
 .center-field h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-field input {
-    width: 93%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  width: 93%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .center-field button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2d73f5;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background-color: #2d73f5;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }

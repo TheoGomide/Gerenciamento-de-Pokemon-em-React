@@ -1,32 +1,13 @@
-.main-div{
-    height: 400px;
-    width: 500px;
-    display: flex;
-    background-image: linear-gradient(to top,#034C8C,#0367A6);
-    justify-content: flex-end;
-    border-radius: 5px;
+.sprite-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
-.box{
-    padding: 10px;
-    margin: 10px 50px;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #6eaed6;
-    border-radius: 20px;
-    width: 100px;
-    color: black;
-}
-
-table{
-    margin-right: 15px;
-}
-
-.left{
-    background-image: linear-gradient(to top,#2B96D9,#4AA2D9);
-    width: 200px;
-    height: 200px;
-    border-radius: 14px;
-    align-self: center; 
-    margin-right: 10px;
-
+.sprite-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

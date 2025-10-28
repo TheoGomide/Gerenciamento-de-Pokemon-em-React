@@ -1,36 +1,55 @@
-import '../../shared/styles/Login.css';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import '../../shared/styles/Login.css'
 
-function Login() {
-  const navigate = useNavigate();
+export default function Login() {
+  const navigate = useNavigate()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const handleSaves = () => {
-    navigate("/Saves");
+  const handleSaves = (e) => {
+    e.preventDefault()
+    // lógica de autenticação (futura)
+    navigate('/Saves')
   }
 
   return (
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <meta name="ABP" content="ABP"/>
-        <title>
-          ABP
-        </title>
-      </head>
-      <body>
-        <div className="center-div">
-          <div className="center-field" >
-            <h2>Login</h2>
-            <label>Username:</label>
-            <input type="text" id="username" name="username" placeholder="username" />
-            <label>Password:</label>
-            <input type="password" id="password" name="password" placeholder="password" />
-            <button onClick={handleSaves}>Login</button>
-          </div>
-        </div>
-      </body>
-    </html>
-  );
-}
+    <main role="main" className="center-div">
+      <section className="center-field" aria-label="Tela de login">
+        <h2>Login</h2>
 
-export default Login;
+        <form onSubmit={handleSaves}>
+          <div className="form-group">
+            <label htmlFor="username">Usuário</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Digite seu usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Senha</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Digite sua senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn-login">
+            Entrar
+          </button>
+        </form>
+      </section>
+    </main>
+  )
+}

@@ -1,45 +1,50 @@
-import '../../shared/styles/Menu.css';
-import { useNavigate } from 'react-router-dom';
-function Menu() {
+import { useNavigate } from 'react-router-dom'
+import '../../shared/styles/Menu.css'
 
-    const navigate = useNavigate();
+export default function Menu() {
+  const navigate = useNavigate()
 
-    const handleProfile = () => {
-      navigate("/Profile");
-    }
-    const handleParty = () => {
-      navigate("/Party");
-    }
-    const handleExit = () => {
-        navigate("/");
-      }
-      const handleComputer = () => {
-        navigate("/Computer");
-      }
+  const handleProfile = () => navigate('/Profile')
+  const handleParty = () => navigate('/Party')
+  const handleExit = () => navigate('/')
+  const handleComputer = () => navigate('/Computer')
 
   return (
-    <html>
-      <body>
+    <main role="main" className="contenedor">
+      <aside className="menu-lateral" aria-label="Menu lateral">
+        <nav>
+          <ul>
+            <li>
+              <button type="button" onClick={handleProfile} className="menu-btn">
+                Perfil
+              </button>
+            </li>
+            <li>
+              <button type="button" onClick={handleParty} className="menu-btn">
+                Time (Party)
+              </button>
+            </li>
+            <li>
+              <button type="button" onClick={handleComputer} className="menu-btn">
+                Computador (PC)
+              </button>
+            </li>
+            <li>
+              <button type="button" onClick={handleExit} className="menu-btn exit">
+                Sair
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-<div className="contenedor">
-    <div className="menu-lateral">
-        <ul>
-          <a href="#" onClick={handleProfile}>Profile</a>
-          <a href="#" onClick={handleParty}>Party</a>
-          <a href="#" onClick={handleComputer} >Computer</a>
-          <a href="#" onClick={handleExit}>Exit</a>
-        </ul>
-    </div>
-
-    <div className="conteudo-principal">
-        <h1>Bem vindo</h1>
-        <p>Esse é o menu do Sistema de Gerenciamento de pokemon, onde será possível você navegar por toda a aplicação!</p>
-    </div>
-</div>
-
-</body>
-    </html>
-  );
+      <section className="conteudo-principal">
+        <h1>Bem-vindo</h1>
+        <p>
+          Este é o menu do Sistema de Gerenciamento de Pokémon, onde é possível navegar por todas as
+          funcionalidades da aplicação!
+        </p>
+      </section>
+    </main>
+  )
 }
-
-export default Menu;
