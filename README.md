@@ -1,17 +1,17 @@
-# 🧹 Projeto Intermediário – Clean Code
+# Projeto Intermediário – Clean Code
 
 ## Gerenciamento de Pokémon em React
 
 ---
 
-### 🧾 **Descrição Geral**
+### **Descrição Geral**
 
 O projeto **Gerenciamento de Pokémon em React** é uma aplicação web que simula o gerenciamento de equipes de Pokémon, permitindo que o usuário crie, edite e salve seus times.  
 Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, para o projeto de **Clean Code**, foi **refatorada profundamente** com base em princípios de legibilidade, modularização e testabilidade.
 
 ---
 
-### 🚀 **Objetivos da Refatoração**
+### **Objetivos da Refatoração**
 
 - Eliminar _code smells_ identificados no código original;
 - Aplicar princípios do livro _Clean Code_ (Martin, 2008);
@@ -23,7 +23,7 @@ Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, pa
 
 ---
 
-### 💡 **Principais Melhorias Implementadas**
+### **Principais Melhorias Implementadas**
 
 | Categoria                        | Melhorias Aplicadas                                                                                                                       |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, pa
 
 ---
 
-### 🧩 **Principais Funcionalidades**
+### **Principais Funcionalidades**
 
 - **Login/Logout Simulado** com armazenamento local;
 - **Menu de Navegação** dinâmico (links desativados quando deslogado);
@@ -49,7 +49,7 @@ Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, pa
 
 ---
 
-### 🧠 **Arquitetura do Projeto**
+### **Arquitetura do Projeto**
 
 ```
 src/
@@ -84,7 +84,7 @@ src/
 
 ---
 
-### 🧪 **Testes e Cobertura**
+### **Testes e Cobertura**
 
 **Ferramentas:**  
 Vitest + React Testing Library + Happy DOM
@@ -100,12 +100,12 @@ Vitest + React Testing Library + Happy DOM
 npx vitest run --coverage
 ```
 
-> 💡 Cobertura atual: **≈70%** das linhas, funções e branches.  
+> Cobertura atual: **≈70%** das linhas, funções e branches.  
 > O relatório completo está disponível em `coverage/index.html`.
 
 ---
 
-### 🧭 **Interface Fluente (Proposta)**
+### **Interface Fluente (Proposta)**
 
 Proposta de implementação de um **builder fluente** para criação de decks Pokémon:
 
@@ -113,11 +113,11 @@ Proposta de implementação de um **builder fluente** para criação de decks Po
 DeckBuilder().withTrainer('Ash').add('Pikachu').add('Charizard').lock().build()
 ```
 
-> 📘 Documentada em `docs/fluent-interface.md`.
+> Documentada em `docs/fluent-interface.md`.
 
 ---
 
-### ⚙️ **Instalação e Execução**
+### **Instalação e Execução**
 
 ```bash
 # Instalar dependências
@@ -134,7 +134,7 @@ Aplicação acessível em **http://localhost:5173**
 
 ---
 
-### 🧰 **Ferramentas e Tecnologias**
+### **Ferramentas e Tecnologias**
 
 | Categoria          | Ferramentas                          |
 | ------------------ | ------------------------------------ |
@@ -146,14 +146,14 @@ Aplicação acessível em **http://localhost:5173**
 
 ---
 
-### 🧑‍💻 **Autores**
+### **Autores**
 
 - **João Victor Miotelli Vitali**
 - **Theo Grings Gomide**
 
 ---
 
-### 📜 **Licença**
+### **Licença**
 
 Distribuído sob licença **MIT** — uso livre para fins acadêmicos e educacionais.
 
