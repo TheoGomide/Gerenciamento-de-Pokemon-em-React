@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { authService } from '../../shared/services/authService'
 import '../../shared/styles/Login.css'
 
 export default function Login() {
@@ -9,8 +10,13 @@ export default function Login() {
 
   const handleSaves = (e) => {
     e.preventDefault()
-    // lógica de autenticação (futura)
-    navigate('/Saves')
+    const ok = authService.login(username, password)
+    if (ok) {
+      navigate('/Menu', { replace: true })
+    } else {
+      // opcional: feedback ao usuário
+      alert('Usuário ou senha inválidos')
+    }
   }
 
   return (

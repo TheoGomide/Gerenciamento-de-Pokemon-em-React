@@ -1,31 +1,20 @@
-// Este arquivo define constantes globais e centraliza valores fixos para manter o código mais limpo e evitar valores mágicos.
+export const APP_NAME = 'PokeManager'
 
-// Rotas principais da aplicação
+export const STORAGE_KEYS = {
+  AUTH_USER: 'pm.auth.user',
+  DECK: 'pm.deck',
+  SAVES: 'pm.saves',
+  PC_BOX: 'pm.pc',
+}
+
+export const LIMITS = {
+  MAX_DECK_SIZE: 6,
+}
+
 export const ROUTES = {
+  LOGIN: '/login',
   HOME: '/',
-  LOGIN: '/Login',
-  MENU: '/Menu',
-  PROFILE: '/Profile',
-  PARTY: '/Party',
-  COMPUTER: '/Computer',
-  SAVES: '/Saves',
-  STATUS: '/Status',
-}
-
-// Endpoints ou URLs externas
-export const API_URL = 'https://api-pokemon.onrender.com' // exemplo; altere conforme o seu backend
-
-// Configurações de estilo ou layout
-export const COLORS = {
-  PRIMARY: '#0f172a',
-  SECONDARY: '#1e293b',
-  TEXT: '#e2e8f0',
-  ACCENT: '#60a5fa',
-}
-
-// Textos fixos ou mensagens
-export const MESSAGES = {
-  WELCOME: 'Bem-vindo ao Gerenciador de Pokémon!',
-  LOADING: 'Carregando...',
-  ERROR_GENERIC: 'Algo deu errado. Tente novamente.',
+  DECK: '/deck',
+  SAVES: '/saves',
+  PC: '/pc',
 }

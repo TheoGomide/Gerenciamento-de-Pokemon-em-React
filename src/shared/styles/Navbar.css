@@ -1,9 +1,64 @@
-.link {
-  border-style: solid;
-  border-width: 6px;
-  border-color: #000000;
-  padding: 2px 4px;
-  margin: auto;
-  background-color: black;
+.navbar {
+  width: 100%;
+  background-color: #1c1c1c; /* fundo preto */
   color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-link {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar-link:hover {
+  color: #00aaff;
+}
+
+.navbar-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-button {
+  background-color: #00aaff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navbar-button:hover {
+  background-color: #0088cc;
 }

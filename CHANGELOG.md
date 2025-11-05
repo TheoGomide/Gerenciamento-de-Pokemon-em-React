@@ -15,6 +15,54 @@
 
 ---
 
+## [1.4.0] - 2025-11-04
+
+### Added
+
+- **AuthService**: Implementado sistema de autenticação e persistência de usuário no localStorage.
+- **ProtectedRoute**: Controle de acesso condicional a rotas protegidas.
+- **Navbar.jsx**: Refatorada com lógica dinâmica de login/logout.
+- **Testes Unitários**: Adicionados testes para `authService`, `Navbar` e `ProtectedRoute`.
+- **Cobertura**: Suíte de testes com cobertura de aproximadamente 70%.
+- **Interface Fluente (DeckBuilder)**: proposta documentada e prototipada.
+- **README.md**: atualizado com instruções de instalação, execução e testes.
+- **CHANGELOG.md**: atualizado para versão final da Entrega 04.
+
+### Changed
+
+- Rotas revisadas no `main.jsx` com integração ao `ProtectedRoute`.
+- Navegação entre páginas corrigida e sincronizada com login.
+- Código padronizado conforme regras do ESLint e Prettier.
+- Ajuste de estrutura e modularização do projeto (`shared/` e `app/Routes/`).
+
+### Fixed
+
+- Redirecionamento incorreto `/login` → `/`.
+- Erro de navegação que permitia acessar rotas sem autenticação.
+- Retorno incorreto do `authService.login` (string → boolean).
+- Falhas nos testes unitários (`ERR_REQUIRE_ESM`) corrigidas com `happy-dom`.
+
+---
+
+## [1.3.0] - 2025-11-01
+
+### Added
+
+- **Constantes globais** em `shared/utils/constants.js`
+- Separação de serviços (`deckService`, `authService`)
+- Início da refatoração do layout e rotas com `App.jsx` e `Navbar.jsx`.
+
+### Changed
+
+- Componentes reestruturados por responsabilidade.
+- Adicionado controle de estado e modularização em `main.jsx`.
+
+### Fixed
+
+- Imports duplicados e acoplamento entre componentes corrigidos.
+
+---
+
 ## [1.2.0] - 2025-10-29
 
 ### Added

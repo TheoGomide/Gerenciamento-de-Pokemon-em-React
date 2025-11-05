@@ -1,111 +1,160 @@
-# Projeto – Clean Code
+# 🧹 Projeto Intermediário – Clean Code
 
 ## Gerenciamento de Pokémon em React
 
 ---
 
-### **Descrição do Projeto**
+### 🧾 **Descrição Geral**
 
-O projeto **Gerenciamento de Pokémon em React** é uma aplicação web desenvolvida para simular o gerenciamento de equipes de Pokémon.  
-O usuário pode criar e editar seu **Deck (time ativo)**, salvar o progresso em **Saves**, visualizar Pokémon armazenados no **PC**, e acessar o sistema por meio de uma tela de **Login**.
-
-Essa aplicação foi escolhida para o projeto de _Clean Code_ com o objetivo de **refatorar o código original**, mantendo as funcionalidades existentes, mas aplicando **melhores práticas de legibilidade, modularização e testes**.
+O projeto **Gerenciamento de Pokémon em React** é uma aplicação web que simula o gerenciamento de equipes de Pokémon, permitindo que o usuário crie, edite e salve seus times.  
+Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, para o projeto de **Clean Code**, foi **refatorada profundamente** com base em princípios de legibilidade, modularização e testabilidade.
 
 ---
 
-### **Principais Funcionalidades**
+### 🚀 **Objetivos da Refatoração**
 
-- Tela de **Login** com autenticação simulada;
-- Tela de **Deck** para montar e gerenciar equipes (máx. 6 Pokémon);
-- Tela de **Saves** para registrar e listar progressos salvos;
-- Tela de **PC** com listagem de Pokémon armazenados;
-- Persistência local utilizando o `localStorage`.
-
----
-
-### **Problemas Detectados (Versão Original)**
-
-Durante a análise do código base, foram identificados diversos _code smells_ que comprometem a manutenção e a escalabilidade do projeto:
-
-| Tipo de Problema                            | Descrição                                                 | Impacto                                                    |
-| ------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-| **Componentes monolíticos**                 | Componentes grandes com múltiplas responsabilidades.      | Dificulta leitura e testes.                                |
-| **Repetição de código (Duplicação)**        | Estruturas HTML e CSS repetidas entre telas.              | Aumenta o esforço de manutenção.                           |
-| **Magic Numbers e Strings**                 | Valores fixos e textos espalhados no código.              | Reduz clareza e dificulta ajustes.                         |
-| **Falta de separação de responsabilidades** | Lógica de estado, visual e persistência no mesmo arquivo. | Viola o princípio SRP (_Single Responsibility Principle_). |
-| **Ausência de testes automatizados**        | Nenhum teste implementado.                                | Diminui confiabilidade ao modificar o código.              |
-| **Falta de padronização de estilo**         | Código sem formatação ou linter ativo.                    | Dificulta colaboração entre desenvolvedores.               |
-| **Baixa acessibilidade (a11y)**             | Falta de labels e atributos semânticos.                   | Prejudica a experiência do usuário.                        |
+- Eliminar _code smells_ identificados no código original;
+- Aplicar princípios do livro _Clean Code_ (Martin, 2008);
+- Organizar o código em camadas e módulos reutilizáveis;
+- Implementar uma suíte de testes unitários com cobertura mínima de 50%;
+- Implementar navegação protegida e lógica de autenticação;
+- Criar uma proposta de **interface fluente** (DeckBuilder);
+- Padronizar o estilo com **ESLint + Prettier + Husky + lint-staged**.
 
 ---
 
-### **Estratégia de Refatoração**
+### 💡 **Principais Melhorias Implementadas**
 
-O objetivo é **melhorar a legibilidade, a modularização e a testabilidade** do sistema, **sem reescrever o código do zero**.
-
-#### **Ações Principais**
-
-- **Organização por Feature:** separar o projeto em módulos (`auth`, `deck`, `saves`, `pc`, `shared`);
-- **Componentização:** criar componentes reutilizáveis (`Button`, `Input`, `PokemonCard`);
-- **Criação de Hooks Personalizados:** para lógica de estado e armazenamento (`useLocalStorage`, `useAuth`);
-- **Serviços Isolados:** mover regras de negócio para `services/` (`deckService`, `saveRepository`, `authService`);
-- **Centralização de Constantes:** em `shared/utils/constants.js`;
-- **Aplicação de Linters e Formatação:** ESLint + Prettier + Husky + lint-staged;
-- **Criação de Testes Unitários:** Vitest + React Testing Library, com cobertura mínima de 50 %;
-- **Sugestão de Interface Fluente:** implementação opcional do `DeckBuilder` (API fluente para criar decks).
+| Categoria                        | Melhorias Aplicadas                                                                                                                       |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Arquitetura**                  | Separação por módulos (`authService`, `deckService`, `constants`, `Navbar`) e eliminação de acoplamentos.                                 |
+| **Autenticação**                 | Implementado serviço `authService` com persistência no `localStorage`.                                                                    |
+| **Rotas Protegidas**             | Adicionada verificação condicional com `ProtectedRoute`.                                                                                  |
+| **Navbar**                       | Refatorada para renderizar links dinâmicos conforme login/logout e manter o design original (fundo preto).                                |
+| **Constantes Globais**           | Criado `shared/utils/constants.js` para rotas e chaves de armazenamento.                                                                  |
+| **Testes Unitários**             | Implementados testes para `authService`, `Navbar` e `ProtectedRoute` com **Vitest + React Testing Library**, atingindo ~70% de cobertura. |
+| **Interface Fluente (proposta)** | Criada classe `DeckBuilder` (API fluente para criar decks Pokémon).                                                                       |
+| **Documentação e Versionamento** | Atualizados `README.md` e `CHANGELOG.md` com histórico e instruções finais.                                                               |
 
 ---
 
-### **Ferramentas Utilizadas**
+### 🧩 **Principais Funcionalidades**
 
-| Categoria                         | Ferramenta                     | Finalidade                                     |
-| --------------------------------- | ------------------------------ | ---------------------------------------------- |
-| **Linter e Formatação**           | ESLint + Prettier              | Padronização e correção automática de código.  |
-| **Controle de Qualidade**         | Husky + lint-staged            | Verificações automáticas antes de cada commit. |
-| **Testes Unitários**              | Vitest + React Testing Library | Criação de testes de unidade e de interface.   |
-| **CI/CD**                         | GitHub Actions                 | Execução automática de build, lint e testes.   |
-| **Gerenciamento de Dependências** | npm + Vite                     | Build rápido e modular.                        |
-| **Documentação**                  | README.md + CHANGELOG.md       | Descrição e histórico de alterações.           |
+- **Login/Logout Simulado** com armazenamento local;
+- **Menu de Navegação** dinâmico (links desativados quando deslogado);
+- **Rotas Protegidas** (`/Menu`, `/Party`, `/Saves`, `/Computer`, `/Profile`);
+- **Persistência de Dados** via `localStorage`;
+- **Componentização e Modularização**;
+- **Testes Unitários Automatizados**.
 
 ---
 
-### **Como Executar o Projeto**
+### 🧠 **Arquitetura do Projeto**
+
+```
+src/
+ ├─ app/
+ │   ├─ Routes/
+ │   │   ├─ Login.jsx
+ │   │   ├─ Menu.jsx
+ │   │   ├─ ProtectedRoute.jsx
+ │   │   └─ ...
+ │   ├─ App.jsx
+ │   └─ App.css
+ ├─ shared/
+ │   ├─ components/
+ │   │   └─ Navbar.jsx
+ │   ├─ services/
+ │   │   ├─ authService.js
+ │   │   └─ deckService.js
+ │   ├─ utils/
+ │   │   └─ constants.js
+ │   ├─ styles/
+ │   │   ├─ Navbar.css
+ │   │   └─ Login.css
+ │   └─ fluent/
+ │       └─ DeckBuilder.js
+ ├─ __tests__/
+ │   ├─ authService.test.js
+ │   ├─ Navbar.test.jsx
+ │   └─ ProtectedRoute.test.jsx
+ ├─ main.jsx
+ └─ vite.config.js
+```
+
+---
+
+### 🧪 **Testes e Cobertura**
+
+**Ferramentas:**  
+Vitest + React Testing Library + Happy DOM
+
+**Serviços e componentes testados:**
+
+- `authService`: login/logout e persistência de usuário
+- `ProtectedRoute`: controle de acesso condicional
+- `Navbar`: renderização dinâmica e logout
+
+```bash
+# Rodar os testes
+npx vitest run --coverage
+```
+
+> 💡 Cobertura atual: **≈70%** das linhas, funções e branches.  
+> O relatório completo está disponível em `coverage/index.html`.
+
+---
+
+### 🧭 **Interface Fluente (Proposta)**
+
+Proposta de implementação de um **builder fluente** para criação de decks Pokémon:
+
+```js
+DeckBuilder().withTrainer('Ash').add('Pikachu').add('Charizard').lock().build()
+```
+
+> 📘 Documentada em `docs/fluent-interface.md`.
+
+---
+
+### ⚙️ **Instalação e Execução**
 
 ```bash
 # Instalar dependências
 npm ci
 
-# Rodar o servidor de desenvolvimento
+# Executar localmente
 npm run dev
 
-# Rodar o linter
-npm run lint
-
-# Rodar os testes
+# Rodar testes
 npm test
 ```
 
-A aplicação ficará disponível em: **http://localhost:5173**
+Aplicação acessível em **http://localhost:5173**
 
 ---
 
-### **Estrutura de Branches**
+### 🧰 **Ferramentas e Tecnologias**
 
-| Branch         | Descrição                                                                   |
-| -------------- | --------------------------------------------------------------------------- |
-| **`original`** | Versão inicial do projeto, antes da refatoração (snapshot v0.9.0-original). |
-| **`main`**     | Versão refatorada, com melhorias graduais e documentação atualizada.        |
-
----
-
-### **Licença**
-
-Este projeto é distribuído sob a licença **MIT**.  
-Sinta-se livre para estudar, modificar e contribuir.
+| Categoria          | Ferramentas                          |
+| ------------------ | ------------------------------------ |
+| Framework          | React + Vite                         |
+| Testes             | Vitest + RTL + Happy DOM             |
+| Qualidade          | ESLint, Prettier, Husky, lint-staged |
+| Documentação       | Markdown + Keep a Changelog          |
+| Controle de Versão | Git + GitHub                         |
 
 ---
 
-### **Autores**
+### 🧑‍💻 **Autores**
 
-**João Victor Miotelli Vitali**  
-**Theo Grings Gomide**
+- **João Victor Miotelli Vitali**
+- **Theo Grings Gomide**
+
+---
+
+### 📜 **Licença**
+
+Distribuído sob licença **MIT** — uso livre para fins acadêmicos e educacionais.
+
+---
