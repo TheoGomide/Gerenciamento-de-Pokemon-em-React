@@ -6,7 +6,6 @@ export default function Menu() {
 
   const handleProfile = () => navigate('/Profile')
   const handleParty = () => navigate('/Party')
-  const handleExit = () => navigate('/')
   const handleComputer = () => navigate('/Computer')
 
   return (
@@ -27,11 +26,6 @@ export default function Menu() {
             <li>
               <button type="button" onClick={handleComputer} className="menu-btn">
                 Computador (PC)
-              </button>
-            </li>
-            <li>
-              <button type="button" onClick={handleExit} className="menu-btn exit">
-                Sair
               </button>
             </li>
           </ul>
