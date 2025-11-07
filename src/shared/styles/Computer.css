@@ -1,13 +1,157 @@
-.sprite-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.pcScreen {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  color: #fff;
 }
-.sprite-item {
+.pcTitle {
+  margin: 0 0 8px 0;
+}
+.pcError {
+  background: rgba(255, 0, 0, 0.18);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.pcLayout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+}
+
+/* painéis */
+.panelHeader {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* ====== TIME (ESQUERDA) ====== */
+
+.teamList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.teamSlot {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.teamSlot.isEmpty {
+  opacity: 0.8;
+}
+
+.slotSprite {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.placeholder {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border-radius: 8px;
+}
+
+.slotInfo {
+  display: grid;
+  gap: 2px;
+}
+.slotName {
+  font-weight: 600;
+}
+.slotMeta {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.slotActions {
+  display: flex;
+  gap: 6px;
+}
+.btnSmall {
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #3b82f6;
+  color: #fff;
+}
+.btnSmall:hover {
+  filter: brightness(1.05);
+}
+
+/* ====== BOX DO PC (DIREITA) ====== */
+
+.pcBox {
+  /* “fundo de box” verdinho estilo jogo */
+  background: rgba(29, 64, 29, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  /* grid estilo GBA: 8 colunas fica bem próximo */
+  grid-template-columns: repeat(8, 56px);
+  gap: 8px;
+  justify-content: start;
+}
+
+.pcCell {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.08s ease;
+}
+.pcCell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.22);
+}
+.pcCell.empty {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pcSprite {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.pcHint {
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+/* responsivo */
+@media (max-width: 980px) {
+  .pcLayout {
+    grid-template-columns: 1fr;
+  }
+  .pcBox {
+    grid-template-columns: repeat(6, 56px);
+  }
 }

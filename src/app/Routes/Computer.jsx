@@ -1,62 +1,121 @@
+import { useMemo } from 'react'
 import { useRoster } from '../../shared/hooks/useRoster'
-
-const col = { width: '50%', padding: 12, boxSizing: 'border-box' }
-const row = { display: 'flex', gap: 12, marginBottom: 8, alignItems: 'center' }
-const imgStyle = { width: 56, height: 56, objectFit: 'contain' }
-const layout = { display: 'flex', gap: 16, alignItems: 'flex-start' }
+import '../../shared/styles/Computer.css'
 
 export default function Computer() {
-  const { pc, team, movePcToTeam, moveTeamToPc, error } = useRoster()
+  const { team, pc, movePcToTeam, moveTeamToPc, error } = useRoster()
+
+  const teamCount = team.length
+  const pcCount = pc.length
+
+  // grade do PC: ordena por species (ou id) só para ficar estável visualmente
+  const pcSorted = useMemo(
+    () => [...pc].sort((a, b) => String(a.species).localeCompare(String(b.species))),
+    [pc]
+  )
+
+  const handlePickFromPc = (p) => {
+    // mover do PC para o time (se houver vaga)
+    try {
+      movePcToTeam(p.id)
+    } catch (e) {
+      // opcional: feedback não intrusivo
+      alert(e.message || 'Não foi possível adicionar ao time.')
+    }
+  }
+
+  const handleSendToPc = (id) => {
+    moveTeamToPc(id)
+  }
 
   return (
-    <section>
-      <h2>Computador</h2>
-      {error && <p style={{ color: 'tomato' }}>{error}</p>}
+    <section className="pcScreen">
+      <h2 className="pcTitle">Computer</h2>
 
-      <div style={layout}>
-        {/* Coluna esquerda: PC */}
-        <div style={col}>
-          <h3>PC (Pokémon disponíveis)</h3>
-          {pc.length === 0 && <p>(PC vazio)</p>}
-          {pc.map((p) => (
-            <div key={p.id} style={row}>
-              {p.image && <img src={p.image} alt={p.species} style={imgStyle} />}
-              <div style={{ flex: 1 }}>
-                <div>
-                  <strong>{p.nickname || p.species}</strong>
-                </div>
-                <small>Nível: {p.level ?? '-'}</small>
-              </div>
-              <button onClick={() => movePcToTeam(p.id)}>Adicionar ao Time</button>
-            </div>
-          ))}
-        </div>
+      {error && <p className="pcError">{error}</p>}
 
-        {/* Coluna direita: Time */}
-        <div style={col}>
-          <h3>Seu Time (máx. 6)</h3>
-          {team.length === 0 && <p>(sem pokémon no time)</p>}
-          {team.map((p, i) => (
-            <div key={p.id} style={row}>
-              {p.image && <img src={p.image} alt={p.species} style={imgStyle} />}
-              <div style={{ flex: 1 }}>
-                <div>
-                  #{i + 1} <strong>{p.nickname || p.species}</strong>
-                </div>
-                <small>Nível: {p.level ?? '-'}</small>
-              </div>
-              <button onClick={() => moveTeamToPc(p.id)}>Enviar para PC</button>
-            </div>
-          ))}
+      <div className="pcLayout">
+        {/* ==== LADO ESQUERDO – TIME ==== */}
+        <aside className="teamPanel">
+          <header className="panelHeader">
+            <strong>Seu Time</strong>
+            <small>({teamCount}/6)</small>
+          </header>
 
-          {/* slots vazios, apenas para visual */}
-          {Array.from({ length: Math.max(0, 6 - team.length) }).map((_, i) => (
-            <div key={'slot-' + i} style={{ ...row, opacity: 0.6 }}>
-              <div style={{ width: 56, height: 56, background: '#eee' }} />
-              <div style={{ flex: 1 }}>[vaga livre]</div>
-            </div>
-          ))}
-        </div>
+          <ul className="teamList">
+            {/* 6 slots */}
+            {Array.from({ length: 6 }).map((_, idx) => {
+              const p = team[idx]
+              if (!p) {
+                return (
+                  <li key={idx} className="teamSlot isEmpty">
+                    <div className="slotSprite placeholder" aria-hidden />
+                    <div className="slotInfo">
+                      <div className="slotName">[vaga livre]</div>
+                      <div className="slotMeta">—</div>
+                    </div>
+                  </li>
+                )
+              }
+              return (
+                <li key={p.id} className="teamSlot">
+                  <img
+                    className="slotSprite"
+                    src={p.image}
+                    alt={p.species}
+                    title={(p.nickname || p.species) + ` • Nv. ${p.level}`}
+                  />
+                  <div className="slotInfo">
+                    <div className="slotName">{p.nickname || p.species}</div>
+                    <div className="slotMeta">Nível: {p.level}</div>
+                  </div>
+                  <div className="slotActions">
+                    <button
+                      className="btnSmall"
+                      onClick={() => handleSendToPc(p.id)}
+                      aria-label={`Enviar ${p.nickname || p.species} para o PC`}
+                    >
+                      Enviar p/ PC
+                    </button>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        </aside>
+
+        {/* ==== LADO DIREITO – BOX DO PC ==== */}
+        <main className="pcPanel">
+          <header className="panelHeader">
+            <strong>BOX 01</strong>
+            <small>{pcCount} armazenado(s)</small>
+          </header>
+
+          <div className="pcBox">
+            {/* Grade estilo jogo */}
+            {pcSorted.map((p) => (
+              <button
+                key={p.id}
+                className="pcCell"
+                title={`${p.nickname || p.species} • Nv. ${p.level} — clique para adicionar ao time`}
+                onClick={() => handlePickFromPc(p)}
+              >
+                <img className="pcSprite" src={p.image} alt={p.species} />
+              </button>
+            ))}
+
+            {/* Preenche células vazias para manter grade retinha visualmente */}
+            {Array.from({
+              length: Math.max(0, Math.ceil((pcSorted.length || 1) / 8) * 8 - pcSorted.length),
+            }).map((_, i) => (
+              <div key={`empty-${i}`} className="pcCell empty" aria-hidden />
+            ))}
+          </div>
+
+          <footer className="pcHint">
+            <small>Dica: clique em um Pokémon do PC para movê-lo ao time.</small>
+          </footer>
+        </main>
       </div>
     </section>
   )
