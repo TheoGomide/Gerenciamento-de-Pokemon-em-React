@@ -15,6 +15,67 @@
 
 ---
 
+## [1.5.0] - 2025-11-07
+
+### Added
+
+- **Novos Testes Unitários (Entrega 04)**:
+  - `saveService.test.js`: valida criação, listagem, sobrescrita, remoção e disparo de eventos `pm:team-updated`.
+  - `teamService.test.js`: valida movimentação entre Time e PC, renomeação e persistência em `localStorage`.
+  - `Profile.test.jsx`: valida renderização de perfil, atualização de campos e ação do botão **Sair**.
+  - **Ampliação da cobertura para ≈80%** das linhas, funções e branches testadas.
+- **Testes Anteriores Mantidos e Otimizados**:
+  - `authService.test.js`: login/logout e persistência local com chave `pm.auth.user`.
+  - `Navbar.test.jsx`: renderização dinâmica dos links com base no estado do login.
+  - `ProtectedRoute.test.jsx`: controle de acesso condicional e redirecionamento seguro.
+- **Interface Fluente (DeckBuilder)**:
+  - Implementação da classe fluente em `shared/fluent/DeckBuilder.js`.
+  - Suporte a criação encadeada de times Pokémon:
+    ```js
+    DeckBuilder().withTrainer('Ash').add('Pikachu').add('Charizard').lock().build()
+    ```
+  - Métodos implementados: `.withTrainer()`, `.add()`, `.toPc()`, `.snapshot()`, `.build()`.
+- **Perfil Dinâmico e Editável**:
+  - Página `Profile.jsx` refatorada com integração ao `authService` e `profileService`.
+  - Campos de **Região**, **Pokémon Favorito** e **Avatar (URL externa)** editáveis e persistentes.
+  - Botão **Sair** funcional, com redirecionamento para `/login`.
+  - Pré-carregamento de imagem de avatar para evitar atrasos visuais.
+- **Documentação Completa**:
+  - `README.md` atualizado com:
+    - Lista de todos os testes (antigos e novos);
+    - Descrição da Interface Fluente;
+    - Instruções de instalação, execução e lint;
+    - Estrutura atualizada do projeto.
+  - `CHANGELOG.md` atualizado com histórico final da Entrega 04.
+
+### Changed
+
+- **Melhorias de Lint e Acessibilidade**
+  - Removido `role="list"` redundante no `<ul>` de `Computer.jsx`.
+  - Corrigida dependência do `useMemo` em `Profile.jsx` (`react-hooks/exhaustive-deps`).
+  - Ajuste geral em componentes conforme ESLint + Prettier.
+- **Organização de Código**
+  - Estrutura `shared/services` consolidada com `authService`, `profileService` e `deckService`.
+  - Atualização de `Computer.jsx` e `Menu.jsx` para comportamento idêntico ao dos jogos originais.
+  - Separação de estilos (`.css`) por página e componente.
+- **Interface e UX**
+  - Reorganização dos painéis de “Time” e “Box” na tela `Computer`.
+  - Estilo da página de Perfil reformulado para layout centralizado e adaptado ao background pixelado.
+- **Documentação**
+  - Inclusão de seções específicas sobre **Interface Fluente**, **Testes Unitários** e **Execução**.
+  - README e CHANGELOG revisados conforme exigências da Entrega 04.
+
+### Fixed
+
+- Corrigido atraso no carregamento de imagens externas no `Profile.jsx`.
+- Corrigido botão **Sair** que não redirecionava corretamente ao logout.
+- Corrigidos warnings do ESLint (`jsx-a11y/no-redundant-roles`, `react-hooks/exhaustive-deps`).
+- Corrigido erro de persistência de saves múltiplos no `saveService`.
+- Ajuste da ordenação estável dos Pokémon no PC (`Computer.jsx`).
+- Corrigido comportamento de atualização do Time após mover Pokémon.
+
+---
+
 ## [1.4.0] - 2025-11-04
 
 ### Added
