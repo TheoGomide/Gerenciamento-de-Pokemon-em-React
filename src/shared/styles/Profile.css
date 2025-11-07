@@ -1,37 +1,113 @@
-.main-div {
+.profileScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+}
+
+.profileCard {
+  width: 360px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.6s ease;
+}
+
+.profileHeader {
   display: flex;
   align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 14px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 12px;
 }
 
-.left-div {
-  text-align: left;
-}
-
-.right-div {
-  text-align: left;
-  margin-left: 20px;
-}
-
-.profile-info {
-  margin-top: 20px;
-}
-
-.profile-info img {
+.profileAvatar {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  border: 2px solid #3b82f6;
+  object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
-  .main-div {
-    flex-direction: column;
-    align-items: stretch;
-  }
+.profileHeaderInfo h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+}
 
-  .right-div {
-    margin-left: 0;
-    margin-top: 20px;
+.profileLevel {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.profileBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileField {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.profileField strong {
+  color: #334155;
+}
+
+.profileFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btnEdit,
+.btnLogout {
+  flex: 1;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btnEdit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btnEdit:hover {
+  filter: brightness(1.1);
+}
+
+.btnLogout {
+  background: #ef4444;
+  color: white;
+}
+
+.btnLogout:hover {
+  filter: brightness(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
