@@ -43,20 +43,22 @@ describe('Computer.jsx', () => {
 
   it('exibe os pokémons do PC como botões clicáveis', () => {
     render(<Computer />)
-    const pcButtons = screen.getAllByRole('button', { name: /clique para adicionar ao time/i })
+    const pcButtons = screen.getAllByTitle(/clique para adicionar ao time/i)
     expect(pcButtons.length).toBeGreaterThan(0)
   })
 
   it('chama movePcToTeam ao clicar em um Pokémon do PC', () => {
     render(<Computer />)
-    const firstPc = screen.getAllByRole('button')[0]
+    const firstPc = screen.getAllByTitle(/clique para adicionar ao time/i)[0]
     fireEvent.click(firstPc)
     expect(mockMovePcToTeam).toHaveBeenCalledTimes(1)
   })
 
   it('chama moveTeamToPc ao clicar no botão Enviar p/ PC', () => {
     render(<Computer />)
-    const sendButtons = screen.getAllByRole('button', { name: /Enviar p\/ PC/i })
+    const sendButtons = screen.getAllByRole('button', {
+      name: /enviar pikachu para o pc/i,
+    })
     fireEvent.click(sendButtons[0])
     expect(mockMoveTeamToPc).toHaveBeenCalledTimes(1)
   })

@@ -22,13 +22,12 @@ describe('saveService', () => {
   }
 
   it('create() cria um save com snapshot e aparece no list() (recente primeiro)', () => {
+    saveService.create('Teste 0', snapshot(2, 1))
     const s1 = saveService.create('Teste 1', snapshot(2, 1))
 
     const list = saveService.list()
     expect(list).toHaveLength(2)
-    // mais recente primeiro
     expect(list[0].key).toBe(s1.key)
-    // preview hidratado (tem level/nickname/species preservados)
     expect(list[0].teamPreview[0]).toHaveProperty('species')
     expect(list[0].teamPreview[0]).toHaveProperty('level')
   })

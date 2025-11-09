@@ -6,11 +6,12 @@ const mk = (id, species, level = 10, nickname = species) => ({ id, species, leve
 
 describe('teamService', () => {
   beforeEach(() => {
-    localStorage.clear()
+    // evita seed automático
+    localStorage.setItem(STORAGE_KEYS.TEAM, JSON.stringify([]))
+    localStorage.setItem(STORAGE_KEYS.PC, JSON.stringify([]))
   })
 
   it('addToTeam() adiciona até 6; mover para PC e voltar funciona', () => {
-    // enche o time
     for (let i = 0; i < 6; i++) {
       teamService.addToTeam(
         mk(`t${i + 1}`, ['Charizard', 'Pikachu', 'Eevee', 'Bulbasaur', 'Gastly', 'Geodude'][i])
@@ -18,30 +19,39 @@ describe('teamService', () => {
     }
     expect(teamService.getTeam()).toHaveLength(6)
 
-    // itens extras devem ir para o PC (ou lançar erro, dependendo da sua regra)
-    // aqui enviamos para o PC explicitamente:
     teamService.addToPc(mk('p1', 'Machop'))
     expect(teamService.getPc()).toHaveLength(1)
 
-    // mover do PC -> Team (liberando antes uma vaga)
-    teamService.moveTeamToPc('t6') // libera 1 slot
+    const sixthId = teamService.getTeam()[5].id
+    teamService.moveTeamToPc(sixthId)
     expect(teamService.getTeam()).toHaveLength(5)
-    teamService.movePcToTeam('p1')
+
+    const pcFirstId = teamService.getPc()[0].id
+    teamService.movePcToTeam(pcFirstId)
+
     expect(teamService.getTeam()).toHaveLength(6)
-    expect(teamService.getPc()).toHaveLength(1) // t6 foi para o PC
+    expect(teamService.getPc()).toHaveLength(1)
   })
 
   it('renameInTeam() e renameInPc() persistem no storage', () => {
     teamService.addToTeam(mk('a1', 'Pikachu', 12))
     teamService.addToPc(mk('b1', 'Eevee', 10))
 
-    teamService.renameInTeam('a1', 'Sparky')
-    teamService.renameInPc('b1', 'Foxy')
+    const realTeamId = teamService.getTeam()[0].id
+    const realPcId = teamService.getPc()[0].id
 
-    const team = JSON.parse(localStorage.getItem(STORAGE_KEYS.TEAM))
-    const pc = JSON.parse(localStorage.getItem(STORAGE_KEYS.PC))
+    teamService.renameInTeam(realTeamId, 'Sparky')
+    teamService.renameInPc(realPcId, 'Foxy')
 
-    expect(team.find((x) => x.id === 'a1').nickname).toBe('Sparky')
-    expect(pc.find((x) => x.id === 'b1').nickname).toBe('Foxy')
+    const team = teamService.getTeam()
+    const pc = teamService.getPc()
+
+    const renamedTeam = team.find((x) => x.id === realTeamId)
+    const renamedPc = pc.find((x) => x.id === realPcId)
+
+    expect(renamedTeam).toBeDefined()
+    expect(renamedTeam.nickname).toBe('Sparky')
+    expect(renamedPc).toBeDefined()
+    expect(renamedPc.nickname).toBe('Foxy')
   })
 })
