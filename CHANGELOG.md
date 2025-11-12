@@ -2,8 +2,6 @@
 
 ---
 
-## [Unreleased]
-
 ### Planejado
 
 - Reorganização por feature (auth, deck, saves, pc)
@@ -48,11 +46,6 @@
 
 ### Added
 
-- **Novos Testes Unitários**:
-  - `saveService.test.js`: valida criação, listagem, sobrescrita, remoção e disparo de eventos `pm:team-updated`.
-  - `teamService.test.js`: valida movimentação entre Time e PC, renomeação e persistência em `localStorage`.
-  - `Profile.test.jsx`: valida renderização de perfil, atualização de campos e ação do botão **Sair**.
-  - **Ampliação da cobertura para ≈80%** das linhas, funções e branches testadas.
 - **Testes Anteriores Mantidos e Otimizados**:
   - `authService.test.js`: login/logout e persistência local com chave `pm.auth.user`.
   - `Navbar.test.jsx`: renderização dinâmica dos links com base no estado do login.
