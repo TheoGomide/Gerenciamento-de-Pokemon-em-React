@@ -8,18 +8,15 @@ export default function Computer() {
   const teamCount = team.length
   const pcCount = pc.length
 
-  // grade do PC: ordena por species (ou id) só para ficar estável visualmente
   const pcSorted = useMemo(
     () => [...pc].sort((a, b) => String(a.species).localeCompare(String(b.species))),
     [pc]
   )
 
   const handlePickFromPc = (p) => {
-    // mover do PC para o time (se houver vaga)
     try {
       movePcToTeam(p.id)
     } catch (e) {
-      // opcional: feedback não intrusivo
       alert(e.message || 'Não foi possível adicionar ao time.')
     }
   }
@@ -35,7 +32,6 @@ export default function Computer() {
       {error && <p className="pcError">{error}</p>}
 
       <div className="pcLayout">
-        {/* ==== LADO ESQUERDO – TIME ==== */}
         <aside className="teamPanel">
           <header className="panelHeader">
             <strong>Seu Time</strong>
@@ -43,7 +39,6 @@ export default function Computer() {
           </header>
 
           <ul className="teamList">
-            {/* 6 slots */}
             {Array.from({ length: 6 }).map((_, idx) => {
               const p = team[idx]
               if (!p) {
@@ -84,7 +79,6 @@ export default function Computer() {
           </ul>
         </aside>
 
-        {/* ==== LADO DIREITO – BOX DO PC ==== */}
         <main className="pcPanel">
           <header className="panelHeader">
             <strong>BOX 01</strong>
@@ -92,7 +86,6 @@ export default function Computer() {
           </header>
 
           <div className="pcBox">
-            {/* Grade estilo jogo */}
             {pcSorted.map((p) => (
               <button
                 key={p.id}
@@ -104,7 +97,6 @@ export default function Computer() {
               </button>
             ))}
 
-            {/* Preenche células vazias para manter grade retinha visualmente */}
             {Array.from({
               length: Math.max(0, Math.ceil((pcSorted.length || 1) / 8) * 8 - pcSorted.length),
             }).map((_, i) => (

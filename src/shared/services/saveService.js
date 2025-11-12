@@ -2,11 +2,9 @@ import { readJSON, writeJSON } from '../utils/storage'
 import { STORAGE_KEYS } from '../utils/constants'
 import { catalog } from '../data/pokemonCatalog'
 
-// ==== helpers ====
 const SAVES_KEY = STORAGE_KEYS.SAVES
 const ACTIVE_KEY = 'pm.activeSave'
 
-// índice por espécie para hidratar time/pc a partir do catálogo
 const bySpecies = new Map(catalog.map((c) => [String(c.species).toLowerCase(), c]))
 
 function hydrate(list = []) {
@@ -24,9 +22,7 @@ function writeAll(arr) {
   writeJSON(SAVES_KEY, arr)
 }
 
-// ==== API ====
 export const saveService = {
-  // lista ordenada (recente primeiro) + time hidratado para preview
   list() {
     const all = readAll()
       .slice()
@@ -49,7 +45,6 @@ export const saveService = {
     else localStorage.removeItem(ACTIVE_KEY)
   },
 
-  // snapshot deve conter pelo menos { team, pc }
   create(name, snapshot) {
     const key = `${Date.now()}-${Math.floor(Math.random() * 1000)}`
     const entry = {
@@ -65,22 +60,18 @@ export const saveService = {
     return entry
   },
 
-  // retorna snapshot hidratado; também grava em storage e emite eventos
   load(key) {
     const all = readAll()
     const found = all.find((s) => s.key === key)
     if (!found) return null
 
-    // grava diretamente nas chaves oficiais
     writeJSON(STORAGE_KEYS.TEAM, found.snapshot.team || [])
     writeJSON(STORAGE_KEYS.PC, found.snapshot.pc || [])
 
     this.setActiveKey(key)
 
-    // avisa páginas (Saves) que o save ativo mudou
     window.dispatchEvent(new CustomEvent('pm:save-active-changed', { detail: { key } }))
 
-    // avisa hooks (useRoster) para reidratar time/pc
     window.dispatchEvent(new CustomEvent('pm:team-updated'))
 
     return {
@@ -104,7 +95,6 @@ export const saveService = {
     }
     writeAll(all)
 
-    // se o sobrescrito é o ativo, notifica UI para atualizar card
     if (this.getActiveKey() === key) {
       window.dispatchEvent(new CustomEvent('pm:save-active-changed', { detail: { key } }))
     }
@@ -116,7 +106,6 @@ export const saveService = {
     const filtered = all.filter((s) => s.key !== key)
     writeAll(filtered)
 
-    // se removeu o ativo, zera e notifica
     if (this.getActiveKey() === key) {
       this.setActiveKey(null)
       window.dispatchEvent(new CustomEvent('pm:save-active-changed', { detail: { key: null } }))

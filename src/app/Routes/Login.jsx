@@ -14,7 +14,6 @@ export default function Login() {
     if (ok) {
       navigate('/Menu', { replace: true })
     } else {
-      // opcional: feedback ao usuário
       alert('Usuário ou senha inválidos')
     }
   }

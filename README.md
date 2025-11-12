@@ -18,23 +18,22 @@ Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, pa
 - Organizar o código em camadas e módulos reutilizáveis;
 - Implementar uma suíte de testes unitários com cobertura mínima de 50%;
 - Implementar navegação protegida e lógica de autenticação;
-- Criar uma proposta de **interface fluente** (DeckBuilder);
+- Criar uma proposta de **interface fluente** (DeckBuilder); (Em andamento)
 - Padronizar o estilo com **ESLint + Prettier + Husky + lint-staged**.
 
 ---
 
 ### **Principais Melhorias Implementadas**
 
-| Categoria                        | Melhorias Aplicadas                                                                                                                                  |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Arquitetura**                  | Separação por módulos (`authService`, `deckService`, `profileService`, `constants`, `Navbar`) e eliminação de acoplamentos.                          |
-| **Autenticação**                 | Implementado serviço `authService` com persistência no `localStorage`.                                                                               |
-| **Rotas Protegidas**             | Adicionada verificação condicional com `ProtectedRoute`.                                                                                             |
-| **Navbar**                       | Refatorada para renderizar links dinâmicos conforme login/logout e manter o design original (fundo preto).                                           |
-| **Constantes Globais**           | Criado `shared/utils/constants.js` para rotas e chaves de armazenamento.                                                                             |
-| **Testes Unitários**             | Testes cobrindo `authService`, `Navbar`, `ProtectedRoute`, `Menu`, `Party`, `Saves`, `Status`, `Profile`, `Computer`, `saveService` e `teamService`. |
-| **Interface Fluente (proposta)** | Criada classe `DeckBuilder` (API fluente para criar decks Pokémon de forma encadeada).                                                               |
-| **Documentação e Versionamento** | Atualizados `README.md` e `CHANGELOG.md` com histórico e instruções completas.                                                                       |
+| Categoria                        | Melhorias Aplicadas                                                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Arquitetura**                  | Separação por módulos (`authService`, `deckService`, `profileService`, `constants`, `Navbar`) e eliminação de acoplamentos. |
+| **Autenticação**                 | Implementado serviço `authService` com persistência no `localStorage`.                                                      |
+| **Rotas Protegidas**             | Adicionada verificação condicional com `ProtectedRoute`.                                                                    |
+| **Navbar**                       | Refatorada para renderizar links dinâmicos conforme login/logout e manter o design original (fundo preto).                  |
+| **Constantes Globais**           | Criado `shared/utils/constants.js` para rotas e chaves de armazenamento.                                                    |
+| **Testes Unitários**             | Testes cobrindo `authService`, `Computer`, `Navbar`, `Profile`, `ProtectedRoute`, `storage`, `saveService` e `teamService`. |
+| **Documentação e Versionamento** | Atualizados `README.md` e `CHANGELOG.md` com histórico e instruções completas.                                              |
 
 ---
 
@@ -48,7 +47,7 @@ Esta aplicação foi originalmente desenvolvida em uma disciplina anterior e, pa
 - **Sistema de Saves** com múltiplos arquivos e sobrescrita;
 - **Persistência de Dados** via `localStorage`;
 - **Componentização e Modularização**;
-- **Testes Unitários Automatizados** com cobertura superior a 80%.
+- **Testes Unitários Automatizados** com cobertura equivalente a 70%.
 
 ---
 
@@ -71,39 +70,60 @@ src/
  ├─ shared/
  │   ├─ components/
  │   │   └─ Navbar.jsx
+ │   ├─ data/
+ │   │   └─ pokemonCatalog.js
+ │   ├─ hooks/
+ │   │   └─ useRoster.js
+ │   ├─ images/
+ │   │   ├─ charizard.jpeg
+ │   │   └─ menuBkgnd.jpg
  │   ├─ services/
  │   │   ├─ authService.js
- │   │   ├─ profileService.js
  │   │   ├─ deckService.js
+ │   │   ├─ pokemonId.js
+ │   │   ├─ profileService.js
  │   │   ├─ saveService.js
  │   │   └─ teamService.js
- │   ├─ utils/
- │   │   └─ constants.js
+ │   ├─ sprites/
+ │   │   ├─ Abra.png
+ │   │   ├─ bubasaur.png
+ │   │   ├─ charizard.jpeg
+ │   │   ├─ Eevee.png
+ │   │   ├─ Gastly.png
+ │   │   ├─ Geodude.png
+ │   │   ├─ Machop.png
+ │   │   ├─ Magikarp.png
+ │   │   ├─ meow.png
+ │   │   ├─ Oddish.jpeg
+ │   │   ├─ pikachu.png
+ │   │   ├─ Psyduck.png
+ │   │   ├─ Snorlax.png
+ │   │   ├─ Squirtle.png
+ │   │   ├─ Vulpix.png
+ │   │   └─ Zubat.png
  │   ├─ styles/
- │   │   ├─ Navbar.css
+ │   │   ├─ Computer.css
  │   │   ├─ Login.css
  │   │   ├─ Menu.css
+ │   │   ├─ Navbar.css
  │   │   ├─ Party.css
+ │   │   ├─ Profile.css
  │   │   ├─ Saves.css
- │   │   ├─ Status.css
- │   │   ├─ Computer.css
- │   │   └─ Profile.css
- │   └─ fluent/
- │       └─ DeckBuilder.js
+ │   │   └─ Status.css
+ │   └─ utils/
+ │      ├─ constants.js
+ │      ├─ dedupe.js
+ │      └─ storage.js
  ├─ __tests__/
  │   ├─ authService.test.js
- │   ├─ Navbar.test.jsx
- │   ├─ ProtectedRoute.test.jsx
- │   ├─ Menu.test.jsx
- │   ├─ Party.test.jsx
- │   ├─ Saves.test.jsx
- │   ├─ Status.test.jsx
- │   ├─ Profile.test.jsx
  │   ├─ Computer.test.jsx
+ │   ├─ Navbar.test.jsx
+ │   ├─ Profile.test.jsx
+ │   ├─ ProtectedRoute.test.jsx
  │   ├─ saveService.test.js
  │   └─ teamService.test.js
  ├─ main.jsx
- └─ vite.config.js
+ └─ setupTests.js
 ```
 
 ---
@@ -115,47 +135,27 @@ Vitest + React Testing Library + Happy DOM
 
 **Serviços e componentes testados:**
 
-| Arquivo / Módulo | Descrição                                               |
-| ---------------- | ------------------------------------------------------- |
-| `authService`    | Login/logout e persistência de usuário                  |
-| `Navbar`         | Renderização condicional e logout dinâmico              |
-| `ProtectedRoute` | Controle de acesso seguro                               |
-| `Menu`           | Exibição e mensagem de boas-vindas                      |
-| `Party`          | Gerenciamento e exibição de time Pokémon                |
-| `Saves`          | Criação, sobrescrita, listagem e exclusão de saves      |
-| `Status`         | Exibição de atributos detalhados dos Pokémon            |
-| `Profile`        | Edição de perfil, avatar e logout                       |
-| `Computer`       | Movimentação entre time e PC (Box)                      |
-| `saveService`    | Testes de persistência e disparo de eventos             |
-| `teamService`    | Testes de consistência entre time e armazenamento local |
+| Arquivo                        | Descrição                                               |
+| ------------------------------ | ------------------------------------------------------- |
+| `authService.test.js`          | Login/logout e persistência de usuário                  |
+| `Computer.test.jsx`            | Movimentação entre time e PC (Box)                      |
+| `Navbar.test.jsx`              | Renderização condicional e logout dinâmico              |
+| `Profile.test.jsx`             | Edição de perfil, avatar e logout                       |
+| `ProtectedRoute.test.jsx`      | Controle de acesso seguro                               |
+| `saveService.test.js`          | Testes de persistência e disparo de eventos             |
+| `teamService.test.js`          | Testes de consistência entre time e armazenamento local |
+| `authService.errors.test.js`   | Testes de tratamento de erros e autenticação inválida.  |
+| `Profile.editing.test.jsx`     | Testes de comportamento do modo de edição de perfil.    |
+| `profileService.test.js`       | Validação de persistência e atualização de perfil.      |
+| `storage.test.js`              | Testes de fallback e reset do `localStorage`.           |
+| `teamService.branches.test.js` | Testes de branches e cenários alternativos de equipe.   |
 
 ```bash
 # Rodar os testes
 npx vitest run --coverage
 ```
 
-> Cobertura atual: **≈80%** das linhas, funções e branches.  
-> O relatório completo está disponível em `coverage/index.html`.
-
----
-
-### **Interface Fluente (Proposta)**
-
-Proposta de implementação de um **builder fluente** para criação e configuração de times Pokémon.  
-A abordagem fluente permite **encadear métodos de forma natural**, reduzindo repetição e aumentando legibilidade:
-
-```js
-DeckBuilder().withTrainer('Ash').add('Pikachu').add('Charizard').toPc('Squirtle').lock().build()
-```
-
-**Princípios aplicados:**
-
-- Encadeamento de métodos (_fluent chaining_);
-- Retorno contextual do próprio objeto (`return this`);
-- Clareza na construção de objetos complexos;
-- Facilidade de extensão e teste.
-
-> Documentada em `docs/fluent-interface.md`.
+> Cobertura atual: **≈70%** das linhas, funções e branches.
 
 ---
 
@@ -168,8 +168,8 @@ npm ci
 # Executar localmente
 npm run dev
 
-# Rodar testes unitários
-npm test
+# Rodar testes
+npx vitest run --coverage
 
 # Rodar linter
 npm run lint

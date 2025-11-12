@@ -14,7 +14,7 @@ export default function Saves() {
   const [saves, setSaves] = useState([])
   const [name, setName] = useState('')
   const [activeKey, setActiveKey] = useState(null)
-  const [active, setActive] = useState(null) // estado dedicado ao card "Save atual"
+  const [active, setActive] = useState(null)
 
   const refresh = () => {
     const list = saveService.list()
@@ -26,7 +26,6 @@ export default function Saves() {
 
   useEffect(() => {
     refresh()
-    // escuta alterações globais do save ativo e reidrata imediatamente
     const onActiveChanged = () => refresh()
     window.addEventListener('pm:save-active-changed', onActiveChanged)
     return () => window.removeEventListener('pm:save-active-changed', onActiveChanged)
@@ -58,18 +57,14 @@ export default function Saves() {
   }
 
   const handleLoad = (key) => {
-    const loaded = saveService.load(key) // grava storage + emite eventos
+    const loaded = saveService.load(key)
     if (!loaded) return
-    // reflete o time na hora
     setTeam(loaded.team)
-    // o card "Save atual" será atualizado pelo evento 'pm:save-active-changed'
   }
 
   const handleDelete = (key) => {
     if (!confirm('Excluir este save?')) return
     saveService.remove(key)
-    // refresh será chamado pelo evento se apagarmos o ativo;
-    // se não for o ativo, atualizamos manualmente:
     if (saveService.getActiveKey() !== null) refresh()
   }
 
@@ -79,8 +74,6 @@ export default function Saves() {
     const ok = saveService.overwrite(activeKey, snap)
     if (!ok) return
     alert('Save atual sobrescrito com sucesso!')
-    // se o sobrescrito for o ativo, evento já forçou refresh();
-    // senão, garantimos consistência:
     refresh()
   }
 
@@ -103,7 +96,6 @@ export default function Saves() {
           </small>
         </div>
 
-        {/* Save atual */}
         <div style={card}>
           <strong>Save atual:</strong>{' '}
           {active ? (
@@ -127,7 +119,6 @@ export default function Saves() {
           )}
         </div>
 
-        {/* Outros saves */}
         <div>
           <h3 style={{ margin: '8px 0' }}>Outros saves</h3>
           {others.length === 0 ? (

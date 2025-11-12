@@ -15,11 +15,40 @@
 
 ---
 
+## [1.6.0] - 2025-11-12
+
+### Added
+
+- **Novos Arquivos de Teste**:
+  - `authService.errors.test.js`: valida fluxos de erro em autenticação e cenários inválidos de login/logout.
+  - `Profile.editing.test.jsx`: cobre comportamento do modo de edição no componente `Profile`, incluindo atualização de campos e persistência.
+  - `profileService.test.js`: garante integridade na criação, leitura e atualização de dados do perfil de usuário.
+  - `storage.test.js`: testa fallback de `localStorage`, limpeza completa e consistência de armazenamento.
+  - `teamService.branches.test.js`: cobre ramificações alternativas e cenários de movimentação entre time e box.
+- **Cobertura de Testes**:
+  - Cobertura expandida para aproximadamente **70%** de linhas e branches.
+  - Ampliação dos cenários de erro e de persistência entre serviços interligados (`authService`, `profileService`, `teamService`).
+
+### Changed
+
+- **Organização dos Testes**
+  - Pasta `__tests__/` reorganizada para destacar serviços com múltiplos cenários.
+  - Nomeação padronizada de arquivos (`*.errors.test.js`, `*.branches.test.js`) para facilitar identificação.
+- **Documentação**
+  - `README.md` atualizado com tabela dos novos testes e instruções de execução.
+  - `CHANGELOG.md` incrementado com histórico da versão 1.6.0.
+
+### Fixed
+
+- n/a
+
+---
+
 ## [1.5.0] - 2025-11-07
 
 ### Added
 
-- **Novos Testes Unitários (Entrega 04)**:
+- **Novos Testes Unitários**:
   - `saveService.test.js`: valida criação, listagem, sobrescrita, remoção e disparo de eventos `pm:team-updated`.
   - `teamService.test.js`: valida movimentação entre Time e PC, renomeação e persistência em `localStorage`.
   - `Profile.test.jsx`: valida renderização de perfil, atualização de campos e ação do botão **Sair**.
@@ -28,13 +57,6 @@
   - `authService.test.js`: login/logout e persistência local com chave `pm.auth.user`.
   - `Navbar.test.jsx`: renderização dinâmica dos links com base no estado do login.
   - `ProtectedRoute.test.jsx`: controle de acesso condicional e redirecionamento seguro.
-- **Interface Fluente (DeckBuilder)**:
-  - Implementação da classe fluente em `shared/fluent/DeckBuilder.js`.
-  - Suporte a criação encadeada de times Pokémon:
-    ```js
-    DeckBuilder().withTrainer('Ash').add('Pikachu').add('Charizard').lock().build()
-    ```
-  - Métodos implementados: `.withTrainer()`, `.add()`, `.toPc()`, `.snapshot()`, `.build()`.
 - **Perfil Dinâmico e Editável**:
   - Página `Profile.jsx` refatorada com integração ao `authService` e `profileService`.
   - Campos de **Região**, **Pokémon Favorito** e **Avatar (URL externa)** editáveis e persistentes.
@@ -46,7 +68,7 @@
     - Descrição da Interface Fluente;
     - Instruções de instalação, execução e lint;
     - Estrutura atualizada do projeto.
-  - `CHANGELOG.md` atualizado com histórico final da Entrega 04.
+  - `CHANGELOG.md` atualizado com histórico.
 
 ### Changed
 

@@ -24,7 +24,6 @@ export default function Profile() {
     return '•'.repeat(n)
   }, [userPassword])
 
-  // se perfil mudar em outra aba, reidrata
   useEffect(() => {
     const handler = () => {
       const p = profileService.get()
@@ -36,7 +35,6 @@ export default function Profile() {
     return () => window.removeEventListener('storage', handler)
   }, [])
 
-  // pré-carrega avatar remoto para evitar delay
   useEffect(() => {
     if (avatar && /^https?:\/\//i.test(avatar)) {
       const img = new Image()

@@ -4,12 +4,8 @@ import { ensureId } from './pokemonId'
 import { dedupeById } from '../utils/dedupe'
 import { catalog } from '../data/pokemonCatalog'
 
-// mapa de espécies para acesso rápido
 const bySpecies = new Map(catalog.map((c) => [String(c.species).toLowerCase(), c]))
 
-// Regras:
-// - storage guarda apenas: { id, species, nickname?, level? }
-// - imagem/stats SEMPRE vêm do catálogo no momento da leitura (hidratação)
 function hydrate(rawList = []) {
   return dedupeById(
     rawList.map((p0) => {
@@ -22,31 +18,26 @@ function hydrate(rawList = []) {
 }
 
 function stripDynamic(p) {
-  // o que vai para o storage (sem image/stats)
   return { id: p.id, species: p.species, nickname: p.nickname, level: p.level }
 }
 
-// Lê valor bruto do localStorage (para saber se a chave existe)
 function getRaw(key) {
   const raw = localStorage.getItem(key)
-  return raw ? JSON.parse(raw) : null // null = chave não existe
+  return raw ? JSON.parse(raw) : null
 }
 
-// TEAM
 function getTeamRaw() {
   const raw = getRaw(STORAGE_KEYS.TEAM)
-  return Array.isArray(raw) ? raw : [] // se não existe, time inicial é []
+  return Array.isArray(raw) ? raw : []
 }
 function saveTeam(rawArr) {
   const minimized = dedupeById(rawArr.map(stripDynamic))
   writeJSON(STORAGE_KEYS.TEAM, minimized)
 }
 
-// PC
 function getPcRaw() {
   const raw = getRaw(STORAGE_KEYS.PC)
   if (raw === null) {
-    // chave não existe: 1ª execução -> semear com catálogo (uma vez)
     const seeded = catalog.map(ensureId).map(stripDynamic)
     writeJSON(STORAGE_KEYS.PC, seeded)
     return seeded
@@ -59,7 +50,6 @@ function savePc(rawArr) {
 }
 
 export const teamService = {
-  // leitura sempre hidratada a partir do catálogo
   getTeam() {
     return hydrate(getTeamRaw())
   },

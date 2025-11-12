@@ -6,7 +6,6 @@ const mk = (id, species, level = 10, nickname = species) => ({ id, species, leve
 
 describe('teamService', () => {
   beforeEach(() => {
-    // evita seed automático
     localStorage.setItem(STORAGE_KEYS.TEAM, JSON.stringify([]))
     localStorage.setItem(STORAGE_KEYS.PC, JSON.stringify([]))
   })

@@ -4,7 +4,6 @@ import { STORAGE_KEYS } from '../shared/utils/constants'
 
 describe('saveService', () => {
   beforeEach(() => {
-    // limpa tudo entre os testes
     localStorage.clear()
     vi.restoreAllMocks()
   })
@@ -41,8 +40,7 @@ describe('saveService', () => {
     expect(JSON.parse(localStorage.getItem(STORAGE_KEYS.TEAM))).toHaveLength(2)
     expect(JSON.parse(localStorage.getItem(STORAGE_KEYS.PC))).toHaveLength(2)
     expect(saveService.getActiveKey()).toBe(s.key)
-    expect(spyEvt).toHaveBeenCalled() // pm:team-updated
-    // retorno hidratado
+    expect(spyEvt).toHaveBeenCalled()
     expect(loaded.team[0]).toHaveProperty('species')
   })
 
@@ -56,7 +54,6 @@ describe('saveService', () => {
     const after = saveService.list().find((x) => x.key === s.key).createdAt
     expect(after).toBeGreaterThanOrEqual(before)
 
-    // garante que o novo snapshot será carregado
     const res = saveService.load(s.key)
     expect(res.team).toHaveLength(2)
     expect(res.pc).toHaveLength(3)

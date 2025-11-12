@@ -1,30 +1,64 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useRoster } from '../../shared/hooks/useRoster'
+import '../../shared/styles/Status.css'
 
 const wrap = { display: 'grid', gap: 12, maxWidth: 520 }
 const head = { display: 'flex', alignItems: 'center', gap: 12 }
 const imgStyle = { width: 72, height: 72, objectFit: 'contain' }
 const statsBox = { background: 'rgba(0,0,0,.25)', padding: 12, borderRadius: 8 }
 
+const STATUS_SEL_KEY = 'pm.status.selectedId'
+
 export default function Status() {
   const { team, rename } = useRoster()
+  const location = useLocation()
 
-  // lista só do time, já ordenado por slot
   const teamList = useMemo(() => team, [team])
 
-  // id selecionado (sempre alguém do time)
-  const [selId, setSelId] = useState(teamList[0]?.id || '')
-  const selected = useMemo(() => teamList.find((p) => p.id === selId), [teamList, selId])
+  const preferredIdRef = useRef(
+    (location.state && location.state.selId) ||
+      new URLSearchParams(location.search).get('sel') ||
+      (typeof localStorage !== 'undefined' ? localStorage.getItem(STATUS_SEL_KEY) : '') ||
+      ''
+  )
 
-  // apelido editável
-  const [nick, setNick] = useState(selected?.nickname || '')
+  const [selId, setSelId] = useState('')
 
-  // quando o time muda (ou o selecionado sai), ressincroniza
   useEffect(() => {
-    const firstId = teamList[0]?.id || ''
-    setSelId((prev) => (teamList.some((p) => p.id === prev) ? prev : firstId))
+    if (teamList.length === 0) return
+
+    const preferred = preferredIdRef.current
+    const hasPreferred = preferred && teamList.some((p) => p.id === preferred)
+    const hasCurrent = selId && teamList.some((p) => p.id === selId)
+
+    if (!hasCurrent) {
+      setSelId(hasPreferred ? preferred : teamList[0].id)
+    }
+  }, [teamList, selId])
+
+  useEffect(() => {
+    if (!selId) return
+    try {
+      localStorage.setItem(STATUS_SEL_KEY, selId)
+    } catch (err) {
+      void err
+    }
+  }, [selId])
+
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key !== STATUS_SEL_KEY) return
+      const next = e.newValue
+      if (next && teamList.some((p) => p.id === next)) setSelId(next)
+    }
+    window.addEventListener('storage', onStorage)
+    return () => window.removeEventListener('storage', onStorage)
   }, [teamList])
 
+  const selected = useMemo(() => teamList.find((p) => p.id === selId), [teamList, selId])
+
+  const [nick, setNick] = useState('')
   useEffect(() => {
     setNick(selected?.nickname || '')
   }, [selected])
@@ -44,7 +78,6 @@ export default function Status() {
         </p>
       ) : (
         <div style={wrap}>
-          {/* seletor só com pokémon do time */}
           <label htmlFor="poke-select">Selecione um pokémon do time:</label>
           <select id="poke-select" value={selId} onChange={(e) => setSelId(e.target.value)}>
             {teamList.map((p, i) => (
@@ -54,7 +87,6 @@ export default function Status() {
             ))}
           </select>
 
-          {/* cabeçalho com sprite + nome */}
           {selected && (
             <>
               <div style={head}>
@@ -71,7 +103,6 @@ export default function Status() {
                 </div>
               </div>
 
-              {/* stats */}
               <div style={statsBox} aria-label="Estatísticas">
                 <strong>Stats</strong>
                 <ul style={{ margin: '8px 0 0 16px' }}>
@@ -84,7 +115,6 @@ export default function Status() {
                 </ul>
               </div>
 
-              {/* renomear */}
               <div>
                 <label htmlFor="nick">Apelido</label>{' '}
                 <input

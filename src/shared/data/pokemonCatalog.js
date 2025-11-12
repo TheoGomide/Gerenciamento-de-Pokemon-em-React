@@ -15,7 +15,6 @@ import SquirtlePng from '../sprites/Squirtle.png'
 import VulpixPng from '../sprites/Vulpix.png'
 import ZubatPng from '../sprites/Zubat.png'
 
-// Catálogo: fonte de verdade para image/stats/level
 export const catalog = [
   {
     species: 'Abra',

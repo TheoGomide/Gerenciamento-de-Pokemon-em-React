@@ -1,46 +1,58 @@
 import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useRoster } from '../../shared/hooks/useRoster'
-
-const row = { display: 'flex', gap: 12, alignItems: 'center', marginBottom: 10 }
-const imgStyle = { width: 56, height: 56, objectFit: 'contain' }
+import { ROUTES } from '../../shared/utils/constants'
+import '../../shared/styles/Party.css'
 
 export default function Party() {
   const { team } = useRoster()
+  const navigate = useNavigate()
 
-  // completa com "vagas livres" só para visual (máx. 6)
+  const goToStatus = (pokemonId) => {
+    localStorage.setItem('pm.status.selectedId', pokemonId)
+    navigate(ROUTES.STATUS, { state: { selId: pokemonId } })
+  }
+
   const slots = useMemo(() => {
     const filled = team.map((p, i) => ({
       key: p.id,
       content: (
-        <div style={row}>
-          {p.image && <img src={p.image} alt={p.species} style={imgStyle} />}
+        <button
+          type="button"
+          className="party-card"
+          onClick={() => goToStatus(p.id)}
+          aria-label={`Abrir status de ${p.nickname || p.species}`}
+        >
+          {p.image && <img className="party-img" src={p.image} alt={p.species} />}
           <div>
             <div>
               #{i + 1} <strong>{p.nickname || p.species}</strong>
             </div>
             <small>Nível: {p.level ?? '-'}</small>
           </div>
-        </div>
+        </button>
       ),
     }))
 
     const empties = Array.from({ length: Math.max(0, 6 - team.length) }).map((_, idx) => ({
-      key: 'empty-' + idx,
+      key: `empty-${idx}`,
       content: (
-        <div style={{ ...row, opacity: 0.6 }}>
-          <div style={{ width: 56, height: 56, background: '#eee', borderRadius: 6 }} />
+        <div className="party-card party-slot-empty" aria-label="Vaga livre">
+          <div className="party-empty-box" />
           <div>[vaga livre]</div>
         </div>
       ),
     }))
 
     return [...filled, ...empties]
-  }, [team])
+  }, [team, goToStatus])
 
   return (
     <section aria-labelledby="party-title">
-      <h2 id="party-title">Seu Time (máx. 6)</h2>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+      <h2 id="party-title" style={{ marginBottom: 16 }}>
+        Seu Time (máx. 6)
+      </h2>
+      <ul className="party-grid">
         {slots.map((s) => (
           <li key={s.key}>{s.content}</li>
         ))}

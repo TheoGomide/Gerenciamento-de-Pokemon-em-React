@@ -25,7 +25,6 @@ export function useRoster() {
     return () => window.removeEventListener('pm:team-updated', handler)
   }, [refresh])
 
-  // ações
   const addToTeam = (p) => {
     try {
       teamService.addToTeam(p)
@@ -57,7 +56,6 @@ export function useRoster() {
     refresh()
   }
 
-  // saves
   const createSave = (name) => {
     const snapshot = { team: teamService.getTeam(), pc: teamService.getPc() }
     return saveService.create(name, snapshot)

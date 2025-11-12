@@ -5,6 +5,7 @@ export const STORAGE_KEYS = {
   TEAM: 'pm.team',
   PC: 'pm.pc',
   SAVES: 'pm.saves',
+  PROFILE: 'pm.profile',
 }
 
 export const LIMITS = {
@@ -13,8 +14,10 @@ export const LIMITS = {
 
 export const ROUTES = {
   LOGIN: '/login',
-  HOME: '/',
-  DECK: '/deck',
+  HOME: '/menu',
+  PARTY: '/party',
+  STATUS: '/status',
+  COMPUTER: '/computer',
   SAVES: '/saves',
-  PC: '/pc',
+  PROFILE: '/profile',
 }
