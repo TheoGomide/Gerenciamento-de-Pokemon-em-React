@@ -35,8 +35,8 @@ export default function Menu() {
       <section className="conteudo-principal">
         <h1>Bem-vindo</h1>
         <p>
-          Este é o menu do Sistema de Gerenciamento de Pokémon, onde é possível navegar por todas as
-          funcionalidades da aplicação!
+          Este é o menu do Sistema de Gerenciamento de Pokémon,<br></br> onde é possível navegar por
+          todas as funcionalidades da aplicação!
         </p>
       </section>
     </main>

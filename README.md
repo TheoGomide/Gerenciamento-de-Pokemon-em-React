@@ -115,12 +115,17 @@ src/
  │      ├─ dedupe.js
  │      └─ storage.js
  ├─ __tests__/
+ │   ├─ authService.errors.test.js
  │   ├─ authService.test.js
  │   ├─ Computer.test.jsx
  │   ├─ Navbar.test.jsx
+ │   ├─ Profile.editing.test.jsx
  │   ├─ Profile.test.jsx
+ │   ├─ profileService.test.js
  │   ├─ ProtectedRoute.test.jsx
  │   ├─ saveService.test.js
+ │   ├─ storage.test.js
+ │   ├─ teamService.branches.test.js
  │   └─ teamService.test.js
  ├─ main.jsx
  └─ setupTests.js

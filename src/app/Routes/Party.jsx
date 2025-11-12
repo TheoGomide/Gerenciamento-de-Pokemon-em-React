@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+// src/app/Routes/Party.jsx
+import { useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRoster } from '../../shared/hooks/useRoster'
 import { ROUTES } from '../../shared/utils/constants'
@@ -8,10 +9,13 @@ export default function Party() {
   const { team } = useRoster()
   const navigate = useNavigate()
 
-  const goToStatus = (pokemonId) => {
-    localStorage.setItem('pm.status.selectedId', pokemonId)
-    navigate(ROUTES.STATUS, { state: { selId: pokemonId } })
-  }
+  const goToStatus = useCallback(
+    (pokemonId) => {
+      localStorage.setItem('pm.status.selectedId', pokemonId)
+      navigate(ROUTES.STATUS, { state: { selId: pokemonId } })
+    },
+    [navigate]
+  )
 
   const slots = useMemo(() => {
     const filled = team.map((p, i) => ({
@@ -45,7 +49,7 @@ export default function Party() {
     }))
 
     return [...filled, ...empties]
-  }, [team, goToStatus])
+  }, [team, goToStatus]) // << inclua goToStatus aqui
 
   return (
     <section aria-labelledby="party-title">
